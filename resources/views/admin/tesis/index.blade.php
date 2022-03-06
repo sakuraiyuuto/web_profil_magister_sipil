@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Kerja Praktik')
+@section('title', 'Tesis')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Kerja Praktik</h1>
+                        <h1 class="m-0">Tesis</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -36,25 +36,25 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Menu Kerja Praktik</h3>
+                                <h3 class="card-title">Edit Menu Tesis</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <form class="from-prevent-multiple-submits"
-                                        action="{{ route('kerja_praktik.update', $kerjaPraktik->id) }}" method="POST"
+                                        action="{{ route('tesis.update', $tesis->id) }}" method="POST"
                                         enctype="multipart/form-data">
                                         @method('patch')
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $kerjaPraktik->id }}">
+                                        <input type="hidden" name="id" value="{{ $tesis->id }}">
                                         <textarea id="teks" placeholder="Enter the Description"
-                                            name="teks">{{ $kerjaPraktik->teks }}</textarea>
+                                            name="teks">{{ $tesis->teks }}</textarea>
                                         <br>
                                         <div class="form-group">
-                                            <label for="nama_file">File Format Dokumen Pengajuan Kerja Praktik (.rar,
+                                            <label for="nama_file">File Format Dokumen Pengajuan Tesis (.rar,
                                                 .zip)</label><br>
-                                            <a href="{{ url($kerjaPraktik->nama_file) }}" download
-                                                target="_blank">{{ $kerjaPraktik->nama_file }}</a>
+                                            <a href="{{ url($tesis->nama_file) }}" download
+                                                target="_blank">{{ $tesis->nama_file }}</a>
                                             <input type="file" class="form-control mt-0" name="nama_file" id="nama_file">
                                         </div>
                                         <button type="submit" class="btn btn-success"> Save </button>

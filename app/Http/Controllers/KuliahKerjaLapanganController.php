@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KerjaPraktik;
+use App\Models\KuliahKerjaLapangan;
 use App\Models\HimpunanMahasiswa;
 use App\Models\AplikasiIntegrasi;
 use App\Models\Kontak;
@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
-class KerjaPraktikController extends Controller
+class KuliahKerjaLapanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +23,9 @@ class KerjaPraktikController extends Controller
     public function index()
     {
         $session_user = Auth::user();
-        $kerjaPraktik = KerjaPraktik::all()->first();
+        $kuliahKerjaLapangan = KuliahKerjaLapangan::all()->first();
 
-        return view('admin.kerja_praktik.index', compact('kerjaPraktik', 'session_user'));
+        return view('admin.kuliah_kerja_lapangan.index', compact('kuliahKerjaLapangan', 'session_user'));
     }
 
     /**
@@ -35,33 +35,33 @@ class KerjaPraktikController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, KerjaPraktik $kerjaPraktik)
+    public function update(Request $request, KuliahKerjaLapangan $kuliahKerjaLapangan)
     {
         $this->validate($request, [
             'id'     => 'required',
             'teks'     => 'required'
         ]);
 
-        $kerjaPraktik = KerjaPraktik::all()
+        $kuliahKerjaLapangan = KuliahKerjaLapangan::all()
             ->where('id', $request->id)
             ->first();
 
         if ($request->nama_file == "") {
-            $fileName = $kerjaPraktik->nama_file;
+            $fileName = $kuliahKerjaLapangan->nama_file;
 
-            KerjaPraktik::where('id', $request->id)
+            KuliahKerjaLapangan::where('id', $request->id)
                 ->update([
                     'teks' => $request->teks,
                     'nama_file' => $fileName,
                 ]);
-            return redirect('/admin/kerja_praktik')->with('status', 'Kerja Praktik Berhasil Diubah');
+            return redirect('/admin/kuliah_kerja_lapangan')->with('status', 'Kerja Praktik Berhasil Diubah');
         } else {
-            $file = $kerjaPraktik->nama_file;
+            $file = $kuliahKerjaLapangan->nama_file;
             if (file_exists($file)) {
                 @unlink($file);
             }
 
-            $path_url = 'files/kerja_praktik/';
+            $path_url = 'files/kuliah_kerja_lapangan/';
 
             $originName = $request->nama_file->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -69,25 +69,25 @@ class KerjaPraktikController extends Controller
             $fileName = Str::slug($fileName) . '_' . time() . '.' . $extension;
             $request->nama_file->move(public_path($path_url), $fileName);
 
-            KerjaPraktik::where('id', $request->id)
+            KuliahKerjaLapangan::where('id', $request->id)
                 ->update([
                     'teks' => $request->teks,
-                    'nama_file' => 'files/kerja_praktik/' . $fileName,
+                    'nama_file' => 'files/kuliah_kerja_lapangan/' . $fileName,
                 ]);
-            return redirect('/admin/kerja_praktik')->with('status', 'Kerja Praktik Berhasil Diubah');
+            return redirect('/admin/kuliah_kerja_lapangan')->with('status', 'Kerja Praktik Berhasil Diubah');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\KerjaPraktik  $kerjaPraktik
+     * @param  \App\Models\KuliahKerjaLapangan  $kuliahKerjaLapangan
      * @return \Illuminate\Http\Response
      */
 
-    public function menuKerjaPraktik()
+    public function menuKuliahKerjaLapangan()
     {
-        $kerjaPraktik = KerjaPraktik::all()
+        $kuliahKerjaLapangan = KuliahKerjaLapangan::all()
             ->first();
 
         $informasiTerbarus = InformasiTerbaru::informasiTerbaru()
@@ -106,6 +106,6 @@ class KerjaPraktikController extends Controller
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kerja_praktik.index',  compact('kerjaPraktik', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.kuliah_kerja_lapangan.index',  compact('kuliahKerjaLapangan', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
     }
 }

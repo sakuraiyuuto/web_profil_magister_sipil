@@ -381,9 +381,9 @@
                         </li>
 
                         <li
-                            class="nav-item {{ set_open(['seminar_proposal.index', 'tugas_akhir.index', 'kerja_praktik.index']) }}">
+                            class="nav-item {{ set_open(['seminar_proposal.index', 'tesis.index', 'kuliah_kerja_lapangan.index']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['seminar_proposal.index', 'tugas_akhir.index', 'kerja_praktik.index']) }}">
+                                class="nav-link {{ set_active(['seminar_proposal.index', 'tesis.index', 'kuliah_kerja_lapangan.index']) }}">
                                 <i class="nav-icon fas fa-file"></i>
                                 <p>
                                     SOP
@@ -393,18 +393,18 @@
                             <ul class="nav nav-treeview  space-maju">
 
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/kerja_praktik') }}"
-                                        class="nav-link {{ set_active(['kerja_praktik.index']) }}">
+                                    <a href="{{ url('admin/kuliah_kerja_lapangan') }}"
+                                        class="nav-link {{ set_active(['kuliah_kerja_lapangan.index']) }}">
                                         <i
-                                            class="far fa{{ set_dot(['kerja_praktik.index']) }}-circle nav-icon"></i>
-                                        <p>Kerja Praktik</p>
+                                            class="far fa{{ set_dot(['kuliah_kerja_lapangan.index']) }}-circle nav-icon"></i>
+                                        <p>Kuliah Kerja Lapangan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/tugas_akhir') }}"
-                                        class="nav-link {{ set_active(['tugas_akhir.index']) }}">
-                                        <i class="far fa{{ set_dot(['tugas_akhir.index']) }}-circle nav-icon"></i>
-                                        <p>Tugas Akhir</p>
+                                    <a href="{{ url('admin/tesis') }}"
+                                        class="nav-link {{ set_active(['tesis.index']) }}">
+                                        <i class="far fa{{ set_dot(['tesis.index']) }}-circle nav-icon"></i>
+                                        <p>Tesis</p>
                                     </a>
                                 </li>
 
