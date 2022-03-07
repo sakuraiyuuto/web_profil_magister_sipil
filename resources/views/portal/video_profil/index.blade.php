@@ -51,8 +51,10 @@
 
 
                         <br>
-                        <div class="ck-content">
-                            {!! $videoProfil->teks !!}
+                        <div class="ck-style-image">
+                            <div class="ck-content">
+                                {!! $videoProfil->teks !!}
+                            </div>
                         </div>
                         <!-- COURSES DETAIL WRAP END -->
                     </div>

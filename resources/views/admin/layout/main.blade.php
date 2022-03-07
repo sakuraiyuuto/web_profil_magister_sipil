@@ -512,9 +512,9 @@
                         </li>
 
                         <li
-                            class="nav-item {{ set_open(['ruang_perkuliahan.index','laboratorium.index','ruang_prodi_akademik.index','perpustakaan.index']) }}">
+                            class="nav-item {{ set_open(['ruang_perkuliahan.index','laboratorium.index','laboratorium.edit','laboratorium.create','ruang_prodi_akademik.index','perpustakaan.index']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['ruang_perkuliahan.index','laboratorium.index','ruang_prodi_akademik.index','perpustakaan.index']) }}">
+                                class="nav-link {{ set_active(['ruang_perkuliahan.index','laboratorium.index','laboratorium.edit','laboratorium.create','ruang_prodi_akademik.index','perpustakaan.index']) }}">
                                 <i class="nav-icon fas fa-building"></i>
                                 <p>
                                     Fasilitas
@@ -534,8 +534,8 @@
 
                                 <li class="nav-item">
                                     <a href="{{ url('admin/laboratorium') }}"
-                                        class="nav-link {{ set_active(['laboratorium.index']) }}">
-                                        <i class="far fa{{ set_dot(['laboratorium.index']) }}-circle nav-icon"></i>
+                                        class="nav-link {{ set_active(['laboratorium.index','laboratorium.edit','laboratorium.create']) }}">
+                                        <i class="far fa{{ set_dot(['laboratorium.index','laboratorium.edit','laboratorium.create']) }}-circle nav-icon"></i>
                                         <p>Laboratorium</p>
                                     </a>
                                 </li>
