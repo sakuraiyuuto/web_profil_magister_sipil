@@ -143,7 +143,7 @@
                 <a href="{{ url('admin/dashboard') }}" class="brand-link">
                     <img src="{{ url('/images/logo.png') }}" alt="Logo" class="brand-image img-circle elevation-3"
                         style="opacity: .8">
-                    <span class="brand-text font-weight-light">Sarjana Teknik Sipil</span>
+                    <span class="brand-text font-weight-light">Magister Teknik Sipil</span>
                 </a>
             </div>
 

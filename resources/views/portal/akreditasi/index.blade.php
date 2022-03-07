@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Akreditasi Prodi - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Akreditasi Prodi - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->

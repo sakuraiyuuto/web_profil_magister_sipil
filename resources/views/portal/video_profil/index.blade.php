@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Video Profil - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Video Profil - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -37,7 +37,7 @@
                         <!-- COURSES DETAIL WRAP START -->
                         <div class="kf_courses_detail_wrap">
                             <div class="kf_edu2_heading1">
-                                <h3>Video Profil Sarjana Teknik Sipil</h3>
+                                <h3>{{ $videoProfil->judul }}</h3>
                             </div>
                             <div class="course_detail_thumbnail">
                                 <div class="embed-responsive embed-responsive-16by9">

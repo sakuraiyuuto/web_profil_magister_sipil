@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Layanan Mahasiswa - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Layanan Mahasiswa - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->

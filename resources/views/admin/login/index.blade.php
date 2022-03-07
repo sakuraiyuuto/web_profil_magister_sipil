@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Admin Sarjana Teknik Sipil</title>
+    <title>Login Admin Magister Teknik Sipil</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -24,10 +24,10 @@
             <div class="card-header text-center">
                 <img src="{{ url('/images/logo.png') }}" alt="Logo" class="brand-image"
                     style="width :10rem;opacity: .8">
-                <p class="h1"><b>Teknik </b>Sarjana Sipil</p>
+                <p class="h1"><b>Teknik </b>Magister Sipil</p>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Halaman Admin Web Sarjana Teknik Sipil</p>
+                <p class="login-box-msg">Halaman Admin Web Magister Teknik Sipil</p>
 
                 @if (session('alert'))
                     <div class="alert alert-danger">

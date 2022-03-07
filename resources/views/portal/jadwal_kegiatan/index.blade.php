@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Jadwal Kegiatan - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Jadwal Kegiatan - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -35,13 +35,17 @@
                         <table id="tabel_jadwal_kegiatan" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Daftar Jadwal Kegiatan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($jadwalKegiatans as $jadwalKegiatan)
                                     <tr>
-                                        <th>
+                                        <td>
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <td>
                                             <!--EVENT LIST Wrap Start-->
                                             <div class="kf_event_list_wrap" style="margin :0;border : 1px solid #b6b6b6">
                                                 <div class="row" style="height : 10rem">
@@ -79,7 +83,7 @@
                                                 </div>
                                             </div>
                                             <!--EVENT LIST Wrap END-->
-                                        </th>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

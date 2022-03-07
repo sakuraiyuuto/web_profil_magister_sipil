@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Kerjasama Mitra Kolaborasi - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Kerjasama Mitra Kolaborasi - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->

@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Beranda - Prodi Sarjana Sipil Teknik UNTAN')
+@section('title', 'Beranda - Prodi Magister Sipil Teknik UNTAN')
 
 @section('container')
     <div class="edu2_main_bn_wrap">
@@ -125,7 +125,7 @@
                 <!-- HEADING 2 START-->
                 <div class="col-md-12">
                     <div class="kf_edu2_heading2">
-                        <h3>Profil Singkat Sarjana Teknik Sipil UNTAN</h3>
+                        <h3>Profil Singkat Magister Teknik Sipil UNTAN</h3>
                     </div>
                 </div>
                 <!-- HEADING 2 END-->
@@ -244,7 +244,7 @@
         <div class="col-md-12">
             <div class="kf_edu2_heading2">
                 <h3>Galeri</h3>
-                <p>Kegiatan Sarjana Teknik Sipil Sampai Saat Ini</p>
+                <p>Kegiatan Magister Teknik Sipil Sampai Saat Ini</p>
             </div>
         </div>
         <!-- HEADING 2 END-->

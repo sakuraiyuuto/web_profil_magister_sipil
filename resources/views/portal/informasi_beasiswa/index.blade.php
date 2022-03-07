@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Informasi Beasiswa - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Informasi Beasiswa - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
