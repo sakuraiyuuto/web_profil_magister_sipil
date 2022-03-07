@@ -59,8 +59,10 @@
                                             href="#">{{ date('d M, Y', strtotime($hasilKarya->release_date)) }}</a>
                                     </li>
                                 </ul>
+                                <div class="ck-style-image">
                                 <div class="ck-content">
                                     {!! $hasilKarya->teks !!}
+                                </div>
                                 </div>
                             </div>
 

@@ -41,10 +41,12 @@
                             <!-- HEADING 1 END-->
 
                             <div class="abt_univ_des">
-                                <div class="ck-content">
-                                    {!! $tataTertibPeraturan->teks !!}
+                                <div class="ck-style-image">
+                                    <div class="ck-content">
+                                        {!! $tataTertibPeraturan->teks !!}
+                                    </div>
+                                </div> 
                                 </div>
-                            </div>
                         </div>
                     </div>
 
