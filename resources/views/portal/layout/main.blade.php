@@ -188,7 +188,7 @@
                                         <span class="submenu">Mahasiswa & Alumni <i
                                                 class="fa fa-angle-down"></i></span>
                                         <ul class="submenu">
-                                            <li><a href="{{ url('himpunan_mahasiswa') }}">Himpunan Mahasiswa</a>
+                                           
                                             </li>
                                             <li><a class="{{ request()->is('layanan_mahasiswa/*') ? 'is-active' : '' }}"
                                                     href="{{ url('layanan_mahasiswa') }}">Layanan Mahasiswa</a></li>

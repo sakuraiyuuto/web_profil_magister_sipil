@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Dokumen Prodi - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Penelitian - Sarjana Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -28,12 +28,11 @@
 
     <!--Content Wrap Start-->
     <div class="kf_content_wrap">
-        <!--ABOUT UNIVERSITY START-->
-        <section>
+        <section class="event_list_page">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <table id="tabel_dokumen_prodi" class="table table-bordered table-striped">
+                        <table id="tabel_penelitian" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -41,44 +40,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dokumenProdis as $dokumenProdi)
+                            @foreach ($dokumenProdis as $dokumenProdi)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <!--kf_courses_wrap Start-->
-                                            <div class="kf_event_list_wrap"
-                                                style="margin :0;border : 1px solid #b6b6b6;padding :10px">
-                                                <div class="row" style="height : 10rem;">
-
+                                            <!--EVENT LIST Wrap Start-->
+                                            <div class="kf_event_list_wrap" style="margin :0;border : 1px solid #b6b6b6">
+                                                <div class="row" style="height : 10rem">
                                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                                         <!--EVENT LIST THUMB Start-->
-
+                                                        <div class="kf_event_list_thumb">
                                                         <figure
-                                                            style="text-align : center;height : 13rem ;background-color :gray;border-radius : 5px;margin-bottom : 15px;">
+                                                            style="text-align : center;height : 100% ;background-color :gray;border-radius : 5px;">
                                                             <i class="fa fa-file"
                                                                 style="font-size : 8rem;padding : 25px ;color : white"></i>
                                                         </figure>
-
+                                                        </div>
                                                         <!--EVENT LIST THUMB END-->
                                                     </div>
+
                                                     <div class="col-lg-9 col-md-9 col-sm-9">
-                                                        <!--kf_courses_des Start-->
-                                                        <div class="kf_courses_des">
-                                                            <div class="courses_des_hding1">
-                                                                <h5>{{ $dokumenProdi->judul }}
-                                                                </h5>
-                                                            </div>
-                                                            <div class="  rating_wrap">
-                                                                {{ $dokumenProdi->release_date }}
-                                                            </div>
-                                                            <a href="{{ url($dokumenProdi->nama_file) }}" download>
-                                                                Download</a>
+                                                        <!--EVENT LIST DES Start-->
+                                                        <div class="kf_event_list_des" style="padding: 10px 10px 10px 0;">
+                                                            <h4><a
+                                                                    href="{{ url($dokumenProdi->slug) }}"><span>{{ $dokumenProdi->judul  }}</span></a>
+                                                            </h4>
+                                                            <ul class="kf_event_list_links">
+                                                                <li><a>Peneliti : {{  $dokumenProdi->author }}</a></li><br>
+                                                                <li><a>Tahun Penelitian : {{ $dokumenProdi->release_date }}</a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="readmore" href="{{ url($dokumenProdi->slug) }}">
+                                                                Selengkapnya
+                                                                <i class="fa fa-long-arrow-right"></i>
+                                                            </a>
                                                         </div>
+                                                        <!--EVENT LIST DES END-->
                                                     </div>
-                                                    <!--kf_courses_des end-->
                                                 </div>
                                             </div>
-                                            <!--kf_courses_wrap end-->
+                                            <!--EVENT LIST Wrap END-->
                                         </td>
                                     </tr>
                                 @endforeach
@@ -144,7 +145,6 @@
                 </div>
             </div>
         </section>
-        <!--ABOUT UNIVERSITY END-->
     </div>
     <!--Content Wrap End-->
 @endsection
@@ -152,7 +152,7 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            $('#tabel_dokumen_prodi').DataTable();
+            $('#tabel_penelitian').DataTable();
         });
     </script>
 @endsection
