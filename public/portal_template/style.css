@@ -54,9 +54,85 @@
 */
 
 /*new added css for this */
+.ck-style-image .ck-content p img{
+	min-width : 200px;
+	width: 65%;
+	vertical-align: text-bottom;
+}
+.ck-style-image .ck-content .image{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ck-style-image .ck-content .image  img{
+	
+	max-width: 65%;
 
 }
-color : white
+.ck-style-image .ck-content .image.image_resized{
+
+	float : none;
+	margin-left : auto;
+	margin-right: auto;
+
+}
+.ck-style-image .ck-content .image.image_resized img{
+	float : none;
+
+
+}
+.ck-style-image .ck-content .image .image_resized a{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width : 100%;
+	height : 100%;
+	z-index: 100;
+}
+
+.ck-style-image .ck-content figure::before{
+	display : none;
+
+}
+.ck-style-image .ck-content .image a{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width : 100%;
+	height : 100%;
+	z-index: 10;
+}
+
+.ck-style-image .ck-content .image a img{
+	
+
+	width: 50rem;
+
+}
+
+.ck-style-image .ck-content .image-style-side{
+	left : 20%;
+	max-width: 100%; 
+	
+	width : 100%;
+}
+.ck-style-image .ck-content .image-style-side img{
+	
+	width: 65%;
+	left : 100%:
+}
+.ck-style-image .ck-content  .image-style-side.image_resized{
+	left : 0%;
+	float : right !important;
+}
+.ck-style-image .ck-content .image-style-side.image_resized img{
+	float : right !important;
+
+
+}
+
+
 .footer-color1{
 	background-color : #21c4b4 !important;
 }
