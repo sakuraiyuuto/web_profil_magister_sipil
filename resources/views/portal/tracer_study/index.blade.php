@@ -31,14 +31,16 @@
 
     <!--Content Wrap Start-->
     <div class="kf_content_wrap">
+        
         <section>
             <div class="container">
+            <div class="kf_edu2_heading1" style="float : none">
+                                <h3>Tracer Study Alumni</h3>
+                            </div>
                 
                 <div class="row">
                     <div class="col-md-8">
-                    <div class="kf_edu2_heading1">
-                                <h3>Tracer Study Alumni</h3>
-                            </div>
+                  
 
                             <div class="col-md-4">
                               

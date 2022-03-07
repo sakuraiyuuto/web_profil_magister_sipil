@@ -63,6 +63,7 @@
 	height : 145px;
 	border-radius : 5px;
 	color : black;
+	z-index : 100;
 	
 }
 .jumlah-tracer p{
