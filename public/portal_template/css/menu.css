@@ -276,7 +276,9 @@ max-height : 0;
 
 
 }
-
+@media (max-width : 1117px) and (min-width : 992px){
+   #nav{
+    width : 66vw !important;}}
 
 
 @media (min-width: 62em) { /* Large devices (desktops, 992px and up) */

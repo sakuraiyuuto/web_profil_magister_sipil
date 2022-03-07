@@ -54,6 +54,24 @@
 */
 
 /*new added css for this */
+.jumlah-tracer{
+	display : block;
+	border : 1px solid rgb(116, 116, 116);
+	padding : 10px;
+	background-color: #f9f9f9;
+	margin-bottom : 20px;
+	height : 145px;
+	border-radius : 5px;
+	color : black;
+	
+}
+.jumlah-tracer p{
+	font-weight: 500;
+}
+.jumlah-tracer h4{
+	font-weight: 800;
+}
+
 .ck-style-image .ck-content p img{
 	min-width : 200px;
 	width: 65%;

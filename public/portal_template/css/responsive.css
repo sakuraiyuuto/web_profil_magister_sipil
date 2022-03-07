@@ -124,6 +124,9 @@ height :  25rem;
 =================================================
 */ 
 @media (max-width: 991px) {
+.height-banner{
+	height : 50vw;
+}
 
 	
 .ck-style-image .ck-content p img{

@@ -142,7 +142,7 @@
                                         </ul>
                                     </li>
                                     <li
-                                        class=" {{ request()->is('kelompok_keahlian_dosen','hasil_karya','jurnal','kurikulum','kalender_akademik','penelitian','pengabdian_kepada_masyarakat','kelompok_keahlian_dosen/*','hasil_karya/*','jurnal/*','kurikulum/*','kalender_akademik/*','penelitian/*','pengabdian_kepada_masyarakat/*','buku','jurnal','haki','prosiding')? 'active': '' }} ">
+                                        class=" {{ request()->is('kelompok_keahlian_dosen','dokumen_prodi','kuliah_kerja_lapangan', 'seminar_proposal', 'tesis', 'dokumen_prodi/*','hasil_karya','jurnal','kurikulum','kalender_akademik','penelitian','pengabdian_kepada_masyarakat','kelompok_keahlian_dosen/*','hasil_karya/*','jurnal/*','kurikulum/*','kalender_akademik/*','penelitian/*','pengabdian_kepada_masyarakat/*','buku','jurnal','haki','prosiding')? 'active': '' }} ">
                                         <span class="submenu">Akademik <i class="fa fa-angle-down"></i></span>
                                         <ul class="submenu">
 
@@ -158,19 +158,24 @@
                                             <li><a class="{{ request()->is('pengabdian_kepada_masyarakat/*') ? 'is-active' : '' }}"
                                                     href="{{ url('pengabdian_kepada_masyarakat') }}">Pengabdian
                                                     Kepada Masyarakat</a></li>
+                                            <li><a href="{{ url('dokumen_prodi') }}">Dokumen
+                                            Prodi</a>
+                                            </li>
+                                            <li class="dropbtn icon2 hidden-menu"><a
+                                                    class="{{ request()->is('kuliah_kerja_lapangan', 'tesis') ? 'is-active' : '' }}"
+                                                   >SOP</a>
+                                                <ul id="drop-content2">
+                                                <li ><a  class="{{ request()->is('kuliah_kerja_lapangan') ? 'sub-active' : '' }}" href="{{ url('kuliah_kerja_lapangan') }}">Kuliah Kerja
+                                                    Lapangan</a></li>
+                                                 <li ><a class="{{ request()->is('tesis') ? 'sub-active' : '' }}"href="{{ url('tesis') }}">Tesis</a></li>
+                                                  
+                                                </ul>
+                                            </li>
                                             <li><a class="{{ request()->is('jurnal/*') ? 'is-active' : '' }}"
                                                     href="{{ url('jurnal') }}">Jurnal Mahasiswa & Dosen</a></li>
                                         </ul>
                                     </li>
-                                    <li
-                                        class="{{ request()->is('kuliah_kerja_lapangan', 'seminar_proposal', 'tesis') ? 'active' : '' }}">
-                                        <span class="submenu"> SOP <i class="fa fa-angle-down"></i></span>
-                                        <ul class="submenu">
-                                            <li><a href="{{ url('kuliah_kerja_lapangan') }}">Kuliah Kerja
-                                                    Lapangan</a></li>
-                                            <li><a href="{{ url('tesis') }}">Tesis</a></li>
-                                        </ul>
-                                    </li>
+                                  
                                     <li
                                         class="{{ request()->is('jadwal_kuliah','jadwal_ujian','jadwal_kegiatan','jadwal_kuliah/*','jadwal_ujian/*','jadwal_kegiatan/*')? 'active': '' }}">
                                         <span class="submenu"> Agenda <i class="fa fa-angle-down"></i></span>
@@ -184,7 +189,7 @@
                                         </ul>
                                     </li>
                                     <li
-                                        class="{{ request()->is('himpunan_mahasiswa','layanan_mahasiswa','informasi_beasiswa','profil_lulusan','tata_tertib_peraturan','himpunan_mahasiswa/*','prestasi_aktivitas_mahasiswa/*','layanan_mahasiswa/*','informasi_beasiswa/*','profil_lulusan/*','tata_tertib_peraturan/*')? 'active': '' }}">
+                                        class="{{ request()->is('tracer_study','himpunan_mahasiswa','layanan_mahasiswa','informasi_beasiswa','profil_lulusan','tata_tertib_peraturan','himpunan_mahasiswa/*','prestasi_aktivitas_mahasiswa/*','layanan_mahasiswa/*','informasi_beasiswa/*','profil_lulusan/*','tata_tertib_peraturan/*')? 'active': '' }}">
                                         <span class="submenu">Mahasiswa & Alumni <i
                                                 class="fa fa-angle-down"></i></span>
                                         <ul class="submenu">
@@ -199,6 +204,7 @@
                                             <li><a href="{{ url('profil_lulusan') }}">Profil Lulusan</a></li>
                                             <li><a href="{{ url('tata_tertib_peraturan') }}">Tata Tertib
                                                     Peraturan</a>
+                                            <li><a href="{{ url('tracer_study') }}">Tracer Study Alumni</a></li>                                                    
                                         </ul>
                                     </li>
                                     <li
@@ -237,11 +243,7 @@
                                             <li><a href="{{ url('perpustakaan') }}">Perpustakaan</a></li>
                                         </ul>
                                     </li>
-                                    <li
-                                        class="{{ request()->is('dokumen_prodi', 'dokumen_prodi/*') ? 'active' : '' }}">
-                                        <a class="beranda" href="{{ url('dokumen_prodi') }}">Dokumen
-                                            Prodi</a>
-                                    </li>
+                                   
                                     <li
                                         class="{{ request()->is('berita', 'blog', 'berita/*', 'blog/*', 'informasi_terbaru') ? 'active' : '' }}">
                                         <span class="submenu">Berita & Informasi <i
