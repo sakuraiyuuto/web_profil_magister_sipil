@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Kerja Praktik - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Kuliah Kerja Lapangan - Sarjana Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -11,12 +11,12 @@
                     <!--KF INR BANNER DES Wrap Start-->
                     <div class="kf_inr_ban_des">
                         <div class="inr_banner_heading">
-                            <h3>Kerja Praktik</h3>
+                            <h3>Kuliah Kerja Lapangan</h3>
                         </div>
                         <div class="kf_inr_breadcrumb">
                             <ul>
                                 <li><a href="{{ url('') }}">Beranda</a></li>
-                                <li><a>Kerja Praktik</a></li>
+                                <li><a>Kuliah Kerja Lapangan</a></li>
                             </ul>
                         </div>
                     </div>
@@ -36,18 +36,18 @@
                         <div class="abt_univ_wrap">
                             <!-- HEADING 1 START-->
                             <div class="kf_edu2_heading1">
-                                <h3>Kerja Praktik Sarjana Teknik Sipil</h3>
+                                <h3>Kuliah Kerja Lapangan Sarjana Teknik Sipil</h3>
                             </div>
                             <!-- HEADING 1 END-->
 
                             <div class="abt_univ_des">
                                 <div class="ck-content">
-                                    {!! $kerjaPraktik->teks !!}
+                                    {!! $kuliahKerjaLapangan->teks !!}
                                 </div>
                             </div>
                             <div class="download_btn">
                                 <b>Dokumen : </b>
-                                <a href="{{ url($kerjaPraktik->nama_file) }}" download
+                                <a href="{{ url($kuliahKerjaLapangan->nama_file) }}" download
                                     class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i
                                         class="fa fa-download"></i>
                                     Download</a>

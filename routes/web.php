@@ -44,8 +44,8 @@ use App\Http\Controllers\StrukturInstansiController;
 use App\Http\Controllers\TataTertibPeraturanController;
 use App\Http\Controllers\VideoProfilController;
 use App\Http\Controllers\VisiMisiController;
-use App\Http\Controllers\TugasAkhirController;
-use App\Http\Controllers\KerjaPraktikController;
+use App\Http\Controllers\TesisController;
+use App\Http\Controllers\KuliahKerjaLapanganController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformasiTerbaruController;
 use App\Http\Controllers\UnduhanTerbaruController;
@@ -76,11 +76,11 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::post('/admin/akreditasi/{akreditasi}/restore', [AkreditasiController::class, 'restore']);
     Route::post('/admin/akreditasi/{akreditasi}/delete_permanen', [AkreditasiController::class, 'deletePermanen']);
 
-    Route::post('/admin/tugas_akhir/{tugas_akhir}/restore', [TugaskhirController::class, 'restore']);
-    Route::post('/admin/tugas_akhir/{tugas_akhir}/delete_permanen', [TugaskhirController::class, 'deletePermanen']);
+    Route::post('/admin/tesis/{tesis}/restore', [TugaskhirController::class, 'restore']);
+    Route::post('/admin/tesis/{tesis}/delete_permanen', [TugaskhirController::class, 'deletePermanen']);
 
-    Route::post('/admin/kerja_praktik/{kerja_praktik}/restore', [KerjaPraktikController::class, 'restore']);
-    Route::post('/admin/kerja_praktik/{kerja_praktik}/delete_permanen', [KerjaPraktikController::class, 'deletePermanen']);
+    Route::post('/admin/kuliah_kerja_lapangan/{kuliah_kerja_lapangan}/restore', [KuliahKerjaLapanganController::class, 'restore']);
+    Route::post('/admin/kuliah_kerja_lapangan/{kuliah_kerja_lapangan}/delete_permanen', [KuliahKerjaLapanganController::class, 'deletePermanen']);
 
     Route::post('/admin/kurikulum/mata_kuliah/tambah', [KurikulumController::class, 'tambahMataKuliah']);
 
@@ -196,8 +196,8 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::resource('/admin/jadwal_kuliah', JadwalKuliahController::class);
     Route::resource('/admin/jadwal_kegiatan', JadwalKegiatanController::class);
     Route::resource('/admin/tata_tertib_peraturan', TataTertibPeraturanController::class);
-    Route::resource('/admin/tugas_akhir', TugasAkhirController::class);
-    Route::resource('/admin/kerja_praktik', KerjaPraktikController::class);
+    Route::resource('/admin/tesis', TesisController::class);
+    Route::resource('/admin/kuliah_kerja_lapangan', KuliahKerjaLapanganController::class);
     Route::resource('/admin/laboratorium_singkat', LaboratoriumSingkatController::class);
     Route::resource('/admin/himpunan_mahasiswa', HimpunanMahasiswaController::class);
 
@@ -256,7 +256,7 @@ Route::get('jadwal_kuliah', [JadwalKuliahController::class, 'menuJadwalKuliah'])
 Route::get('jadwal_kegiatan', [JadwalKegiatanController::class, 'menuJadwalKegiatan']);
 Route::get('tata_tertib_peraturan', [TataTertibPeraturanController::class, 'menuTataTertibPeraturan']);
 Route::get('kelompok_keahlian_dosen', [KelompokKeahlianDosenController::class, 'menuKelompokKeahlianDosen']);
-Route::get('tugas_akhir', [TugasAkhirController::class, 'menuTugasAkhir']);
-Route::get('kerja_praktik', [KerjaPraktikController::class, 'menuKerjaPraktik']);
+Route::get('tesis', [TesisController::class, 'menuTesis']);
+Route::get('kuliah_kerja_lapangan', [KuliahKerjaLapanganController::class, 'menuKuliahKerjaLapangan']);
 Route::get('laboratorium', [LaboratoriumController::class, 'menuLaboratorium']);
 Route::get('laboratorium/{slug}', [LaboratoriumController::class, 'menuDetailLaboratorium']);

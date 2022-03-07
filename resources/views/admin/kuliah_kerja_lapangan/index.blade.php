@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Tugas Akhir')
+@section('title', 'Kuliah Kerja Lapangan')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Tugas Akhir</h1>
+                        <h1 class="m-0">Kuliah Kerja Lapangan</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -36,25 +36,26 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Menu Tugas Akhir</h3>
+                                <h3 class="card-title">Edit Menu Kuliah Kerja Lapangan</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <form class="from-prevent-multiple-submits"
-                                        action="{{ route('tugas_akhir.update', $tugasAkhir->id) }}" method="POST"
-                                        enctype="multipart/form-data">
+                                        action="{{ route('kuliah_kerja_lapangan.update', $kuliahKerjaLapangan->id) }}"
+                                        method="POST" enctype="multipart/form-data">
                                         @method('patch')
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $tugasAkhir->id }}">
+                                        <input type="hidden" name="id" value="{{ $kuliahKerjaLapangan->id }}">
                                         <textarea id="teks" placeholder="Enter the Description"
-                                            name="teks">{{ $tugasAkhir->teks }}</textarea>
+                                            name="teks">{{ $kuliahKerjaLapangan->teks }}</textarea>
                                         <br>
                                         <div class="form-group">
-                                            <label for="nama_file">File Format Dokumen Pengajuan Tugas Akhir (.rar,
+                                            <label for="nama_file">File Format Dokumen Pengajuan Kuliah Kerja Lapangan
+                                                (.rar,
                                                 .zip)</label><br>
-                                            <a href="{{ url($tugasAkhir->nama_file) }}" download
-                                                target="_blank">{{ $tugasAkhir->nama_file }}</a>
+                                            <a href="{{ url($kuliahKerjaLapangan->nama_file) }}" download
+                                                target="_blank">{{ $kuliahKerjaLapangan->nama_file }}</a>
                                             <input type="file" class="form-control mt-0" name="nama_file" id="nama_file">
                                         </div>
                                         <button type="submit" class="btn btn-success"> Save </button>

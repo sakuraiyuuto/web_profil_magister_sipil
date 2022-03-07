@@ -163,11 +163,12 @@
                                         </ul>
                                     </li>
                                     <li
-                                        class="{{ request()->is('kerja_praktik', 'seminar_proposal', 'tugas_akhir') ? 'active' : '' }}">
+                                        class="{{ request()->is('kuliah_kerja_lapangan', 'seminar_proposal', 'tesis') ? 'active' : '' }}">
                                         <span class="submenu"> SOP <i class="fa fa-angle-down"></i></span>
                                         <ul class="submenu">
-                                            <li><a href="{{ url('kerja_praktik') }}">Kerja Praktik</a></li>
-                                            <li><a href="{{ url('tugas_akhir') }}">Tugas Akhir</a></li>
+                                            <li><a href="{{ url('kuliah_kerja_lapangan') }}">Kuliah Kerja
+                                                    Lapangan</a></li>
+                                            <li><a href="{{ url('tesis') }}">Tesis</a></li>
                                         </ul>
                                     </li>
                                     <li

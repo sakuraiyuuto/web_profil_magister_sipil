@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TugasAkhir;
+use App\Models\Tesis;
 use App\Models\HimpunanMahasiswa;
 use App\Models\AplikasiIntegrasi;
 use App\Models\Kontak;
@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
-class TugasAkhirController extends Controller
+class TesisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +23,9 @@ class TugasAkhirController extends Controller
     public function index()
     {
         $session_user = Auth::user();
-        $tugasAkhir = TugasAkhir::all()->first();
+        $tesis = Tesis::all()->first();
 
-        return view('admin.tugas_akhir.index', compact('tugasAkhir', 'session_user'));
+        return view('admin.tesis.index', compact('tesis', 'session_user'));
     }
 
     /**
@@ -35,33 +35,33 @@ class TugasAkhirController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, TugasAkhir $tugasAkhir)
+    public function update(Request $request, Tesis $tesis)
     {
         $this->validate($request, [
             'id'     => 'required',
             'teks'     => 'required'
         ]);
 
-        $tugasAkhir = TugasAkhir::all()
+        $tesis = Tesis::all()
             ->where('id', $request->id)
             ->first();
 
         if ($request->nama_file == "") {
-            $fileName = $tugasAkhir->nama_file;
+            $fileName = $tesis->nama_file;
 
-            TugasAkhir::where('id', $request->id)
+            Tesis::where('id', $request->id)
                 ->update([
                     'teks' => $request->teks,
                     'nama_file' => $fileName,
                 ]);
-            return redirect('/admin/tugas_akhir')->with('status', 'Tugas Akhir Berhasil Diubah');
+            return redirect('/admin/tesis')->with('status', 'Tugas Akhir Berhasil Diubah');
         } else {
-            $file = $tugasAkhir->nama_file;
+            $file = $tesis->nama_file;
             if (file_exists($file)) {
                 @unlink($file);
             }
 
-            $path_url = 'files/tugas_akhir/';
+            $path_url = 'files/tesis/';
 
             $originName = $request->nama_file->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -69,25 +69,25 @@ class TugasAkhirController extends Controller
             $fileName = Str::slug($fileName) . '_' . time() . '.' . $extension;
             $request->nama_file->move(public_path($path_url), $fileName);
 
-            TugasAkhir::where('id', $request->id)
+            Tesis::where('id', $request->id)
                 ->update([
                     'teks' => $request->teks,
-                    'nama_file' => 'files/tugas_akhir/' . $fileName,
+                    'nama_file' => 'files/tesis/' . $fileName,
                 ]);
-            return redirect('/admin/tugas_akhir')->with('status', 'Tugas Akhir Berhasil Diubah');
+            return redirect('/admin/tesis')->with('status', 'Tugas Akhir Berhasil Diubah');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TugasAkhir  $tugasAkhir
+     * @param  \App\Models\Tesis  $tesis
      * @return \Illuminate\Http\Response
      */
 
-    public function menuTugasAkhir()
+    public function menuTesis()
     {
-        $tugasAkhir = TugasAkhir::all()
+        $tesis = Tesis::all()
             ->first();
 
         $informasiTerbarus = InformasiTerbaru::informasiTerbaru()
@@ -106,6 +106,6 @@ class TugasAkhirController extends Controller
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.tugas_akhir.index',  compact('tugasAkhir', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.tesis.index',  compact('tesis', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
     }
 }
