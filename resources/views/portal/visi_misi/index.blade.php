@@ -41,8 +41,10 @@
                             <!-- HEADING 1 END-->
 
                             <div class="abt_univ_des">
-                                <div class="ck-content">
-                                    {!! $visiMisi->teks !!}
+                                <div class="ck-style-image">
+                                    <div class="ck-content">
+                                        {!! $visiMisi->teks !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>

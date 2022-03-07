@@ -125,6 +125,65 @@ height :  25rem;
 */ 
 @media (max-width: 991px) {
 
+	
+.ck-style-image .ck-content p img{
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width : 50rem;
+
+
+}
+.ck-style-image .ck-content .image{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ck-style-image .ck-content .image  img{
+	
+
+	width: 100%;
+
+}
+
+.ck-style-image .ck-content .image a{
+
+	width : 100%;
+	height : 100%;
+	z-index: 10;
+}
+
+.ck-style-image .ck-content .image a img{
+
+	width: 50rem;
+
+}
+
+.ck-style-image .ck-content .image-style-side{
+	left : 0%;
+	max-width: 100%; 
+width : 100%;
+}
+.ck-style-image .ck-content .image-style-side img{
+
+	width: 100%;
+	left : 0:
+}
+/**link**/
+.ck-style-image .ck-content .image-style-side{
+	left : 0;
+	max-width: 100%; 
+width : 100%;
+}
+.ck-style-image .ck-content .image-style-side img{
+	
+	width: 100%;
+	left : 0:
+}
+
 	#nav li.active span{
         background: #0082BD;
  
