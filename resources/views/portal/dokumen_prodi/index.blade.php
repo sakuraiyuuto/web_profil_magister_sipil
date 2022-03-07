@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Dokumen Prodi - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Dokumen Prodi - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->

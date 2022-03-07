@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Hasil Karya - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Hasil Karya - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -35,7 +35,7 @@
                     <!-- HEADING 2 START-->
                     <div class="col-md-12">
                         <div class="kf_edu2_heading2">
-                            <h3>Hasil Karya Sarjana Teknik Sipil</h3>
+                            <h3>Hasil Karya Magister Teknik Sipil</h3>
                         </div>
                     </div>
                     <!-- HEADING 2 END-->

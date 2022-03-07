@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Ruang Perkuliahan - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Ruang Perkuliahan - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -36,7 +36,7 @@
                         <div class="abt_univ_wrap">
                             <!-- HEADING 1 START-->
                             <div class="kf_edu2_heading1">
-                                <h3>Ruang Perkuliahan Sarjana Teknik Sipil</h3>
+                                <h3>Ruang Perkuliahan Magister Teknik Sipil</h3>
                             </div>
                             <!-- HEADING 1 END-->
 

@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Kelompok Keahlian Dosen - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Kelompok Keahlian Dosen - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->

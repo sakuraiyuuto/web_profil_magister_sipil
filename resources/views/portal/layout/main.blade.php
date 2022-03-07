@@ -313,7 +313,7 @@
                     <!--EDU2 FOOTER CONTANT DES START-->
                     <div class="col-md-4">
                         <div class="widget widget-links">
-                            <h5>Tentang Sarjana Teknik Sipil UNTAN</h5>
+                            <h5>Tentang Magister Teknik Sipil UNTAN</h5>
                             <p style="color :white">{{ $profilSingkat->teks }}
 
                             </p>
@@ -380,7 +380,7 @@
 
                     <div class="col-md-6">
                         <div class="copyright_des">
-                            <span>&copy;<a href="#">Sarjana Teknik Sipil Universitas Tanjungpura 2022</a></span>
+                            <span>&copy;<a href="#">Magister Teknik Sipil Universitas Tanjungpura 2022</a></span>
                         </div>
                     </div>
                 </div>

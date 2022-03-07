@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Tesis - Sarjana Teknik Sipil UNTAN')
+@section('title', 'Tesis - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -36,7 +36,7 @@
                         <div class="abt_univ_wrap">
                             <!-- HEADING 1 START-->
                             <div class="kf_edu2_heading1">
-                                <h3>Tesis Sarjana Teknik Sipil</h3>
+                                <h3>Tesis Magister Teknik Sipil</h3>
                             </div>
                             <!-- HEADING 1 END-->
 
