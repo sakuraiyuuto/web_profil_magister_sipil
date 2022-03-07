@@ -260,3 +260,4 @@ Route::get('tesis', [TesisController::class, 'menuTesis']);
 Route::get('kuliah_kerja_lapangan', [KuliahKerjaLapanganController::class, 'menuKuliahKerjaLapangan']);
 Route::get('laboratorium', [LaboratoriumController::class, 'menuLaboratorium']);
 Route::get('laboratorium/{slug}', [LaboratoriumController::class, 'menuDetailLaboratorium']);
+Route::get('tracer_alumni', [LaboratoriumController::class, 'menuDetailTracerstudy']);
