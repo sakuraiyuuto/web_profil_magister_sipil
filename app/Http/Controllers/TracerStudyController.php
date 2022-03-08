@@ -17,27 +17,21 @@ class TracerStudyController extends Controller
     public function menuTracerStudy()
     {
         $profilSingkat = ProfilSingkat::all()
-        ->first();
-         $kontak = Kontak::all()
-        ->first();
+            ->first();
+        $kontak = Kontak::all()
+            ->first();
 
-        $response = Http::get('http://tracerstudyalumni.untan.ac.id/API/getDataJumlah/id_prodi');
-        $tracerStudy = $response->json($key =null);
-        $status =$tracerStudy["status"];
-        
-        
-     
-        if ($status=='200') {
-            $jumlahPengisi =  $tracerStudy["jumlahPengisi"]; 
-            $jumlahPengisiValidasi =  $tracerStudy ["jumlahPengisiValidasi"];
-            $jumlahPengisihariini =  $tracerStudy ["jumlahPengisihariini"];
-           
-         
+        $response = Http::get('http://tracerstudyalumni.untan.ac.id/API/getDataJumlah/314');
+        $tracerStudy = $response->json($key = null);
+        $status = $tracerStudy["status"];
+
+        if ($status == '200') {
+            $jumlahPengisi =  $tracerStudy["jumlahPengisi"];
+            $jumlahPengisiValidasi =  $tracerStudy["jumlahPengisiValidasi"];
+            $jumlahPengisihariini =  $tracerStudy["jumlahPengisihariini"];
         } else {
             return redirect('/errors/404.blade.php')->with('alert', 'Aplikasi Sedang Dalam Perbaikan');
-
-                 
-            };
+        };
 
         $informasiTerbarus = InformasiTerbaru::informasiTerbaru()
             ->take(3)
@@ -55,6 +49,6 @@ class TracerStudyController extends Controller
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.tracer_study.index',  compact('status','jumlahPengisi','jumlahPengisiValidasi','jumlahPengisihariini','tataTertibPeraturan', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.tracer_study.index',  compact('status', 'jumlahPengisi', 'jumlahPengisiValidasi', 'jumlahPengisihariini', 'tataTertibPeraturan', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
     }
 }
