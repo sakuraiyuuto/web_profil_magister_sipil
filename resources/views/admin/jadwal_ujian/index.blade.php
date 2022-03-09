@@ -77,7 +77,6 @@
                                                             <td>Belum Rilis</td>
                                                         @endif
                                                     @else
-                                                        ($jadwalUjian->deleted_at != "")
                                                         <td>Terhapus</td>
                                                     @endif
                                                     @if ($jadwalUjian->deleted_at == '')

@@ -13,7 +13,6 @@ use App\Http\Controllers\DokumenProdiController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\HasilKaryaController;
-use App\Http\Controllers\HimpunanMahasiswaController;
 use App\Http\Controllers\LaboratoriumController;
 use App\Http\Controllers\InformasiBeasiswaController;
 use App\Http\Controllers\JadwalKuliahController;
@@ -200,7 +199,6 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::resource('/admin/tesis', TesisController::class);
     Route::resource('/admin/kuliah_kerja_lapangan', KuliahKerjaLapanganController::class);
     Route::resource('/admin/laboratorium_singkat', LaboratoriumSingkatController::class);
-    Route::resource('/admin/himpunan_mahasiswa', HimpunanMahasiswaController::class);
 
     Route::post('/admin/ckeditor/upload', 'App\Http\Controllers\CKEditorController@store')->name('ckeditor.upload');
 });
@@ -211,7 +209,6 @@ Route::get('sejarah', [SejarahController::class, 'menuSejarah']);
 Route::get('video_profil', [VideoProfilController::class, 'menuVideoProfil']);
 Route::get('sambutan', [SambutanPimpinanInstansiController::class, 'menuSambutanPimpinanInstansi']);
 Route::get('visi_misi', [VisiMisiController::class, 'menuVisiMisi']);
-Route::get('himpunan_mahasiswa', [HimpunanMahasiswaController::class, 'menuHimpunanMahasiswa']);
 Route::get('struktur_organisasi', [StrukturInstansiController::class, 'menuStrukturInstansi']);
 Route::get('akreditasi', [AkreditasiController::class, 'menuAkreditasi']);
 Route::get('kerjasama_mitra_kolaborasi', [KerjasamaMitraKolaborasiController::class, 'menuKerjasamaMitraKolaborasi']);

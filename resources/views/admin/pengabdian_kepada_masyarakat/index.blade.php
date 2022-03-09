@@ -49,7 +49,8 @@
                                     </div>
                                 </div>
 
-                                <table id="tabel_pengabdian_kepada_masyarakat" class="table table-bordered table-striped mt-2">
+                                <table id="tabel_pengabdian_kepada_masyarakat"
+                                    class="table table-bordered table-striped mt-2">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -75,11 +76,11 @@
                                                         style="width:100px"></td>
                                                 @if (strlen($pengabdianKeMasyarakat->teks) > 100)
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($pengabdianKeMasyarakat->teks), 0, 100) . '...' )}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($pengabdianKeMasyarakat->teks), 0, 100) . '...') }}
                                                     </td>
                                                 @else
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($pengabdianKeMasyarakat->teks), 0, 100))}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($pengabdianKeMasyarakat->teks), 0, 100)) }}
                                                     </td>
                                                 @endif
                                                 <td>{{ $pengabdianKeMasyarakat->release_date }}</td>
@@ -89,7 +90,7 @@
                                                     @else
                                                         <td>Belum Rilis</td>
                                                     @endif
-                                                @else ($pengabdianKeMasyarakat->deleted_at != "")
+                                                @else
                                                     <td>Terhapus</td>
                                                 @endif
                                                 @if ($pengabdianKeMasyarakat->deleted_at == '')

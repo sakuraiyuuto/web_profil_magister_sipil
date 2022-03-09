@@ -72,11 +72,11 @@
                                                 </td>
                                                 @if (strlen($layananMahasiswa->teks) > 100)
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($layananMahasiswa->teks), 0, 100) . '...' )}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($layananMahasiswa->teks), 0, 100) . '...') }}
                                                     </td>
                                                 @else
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($layananMahasiswa->teks), 0, 100) . '...' )}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($layananMahasiswa->teks), 0, 100) . '...') }}
                                                     </td>
                                                 @endif
                                                 <td>{{ $layananMahasiswa->release_date }}</td>
@@ -86,7 +86,7 @@
                                                     @else
                                                         <td>Belum Rilis</td>
                                                     @endif
-                                                @else ($layananMahasiswa->deleted_at != "")
+                                                @else
                                                     <td>Terhapus</td>
                                                 @endif
                                                 @if ($layananMahasiswa->deleted_at == '')

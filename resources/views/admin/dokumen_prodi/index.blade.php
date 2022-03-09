@@ -73,7 +73,6 @@
                                                             <td>Belum Rilis</td>
                                                         @endif
                                                     @else
-                                                        ($dokumenProdi->deleted_at != "")
                                                         <td>Terhapus</td>
                                                     @endif
                                                     @if ($dokumenProdi->deleted_at == '')

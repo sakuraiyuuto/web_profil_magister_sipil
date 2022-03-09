@@ -74,7 +74,7 @@
                                                         @else
                                                             <td>Belum Rilis</td>
                                                         @endif
-                                                    @else ($quote->deleted_at != "")
+                                                    @else
                                                         <td>Terhapus</td>
                                                     @endif
                                                     @if ($quote->deleted_at == '')

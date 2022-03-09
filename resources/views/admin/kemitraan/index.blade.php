@@ -70,7 +70,7 @@
                                                         @else
                                                             <td>Belum Rilis</td>
                                                         @endif
-                                                    @else ($kemitraan->deleted_at != "")
+                                                    @else
                                                         <td>Terhapus</td>
                                                     @endif
                                                     @if ($kemitraan->deleted_at == '')

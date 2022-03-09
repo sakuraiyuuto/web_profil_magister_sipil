@@ -71,8 +71,8 @@
                                                 <td>{{ $jadwalKegiatan->judul }}</td>
                                                 <td>{{ $jadwalKegiatan->author }}</td>
                                                 <td>{{ $jadwalKegiatan->tahun }}</td>
-                                                <td><img src="{{ url($jadwalKegiatan->thumbnail) }}"
-                                                        style="width:100px"></td>
+                                                <td><img src="{{ url($jadwalKegiatan->thumbnail) }}" style="width:100px">
+                                                </td>
                                                 @if (strlen($jadwalKegiatan->teks) > 100)
                                                     <td>
                                                         {!! substr($jadwalKegiatan->teks, 0, 100) . '...' !!}
@@ -89,7 +89,7 @@
                                                     @else
                                                         <td>Belum Rilis</td>
                                                     @endif
-                                                @else ($jadwalKegiatan->deleted_at != "")
+                                                @else
                                                     <td>Terhapus</td>
                                                 @endif
                                                 @if ($jadwalKegiatan->deleted_at == '')

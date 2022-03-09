@@ -89,7 +89,6 @@
                                                             <td>Belum Rilis</td>
                                                         @endif
                                                     @else
-                                                        ($jurnal->deleted_at != "")
                                                         <td>Terhapus</td>
                                                     @endif
                                                     @if ($jurnal->deleted_at == '')

@@ -74,11 +74,11 @@
                                                 <td><img src="{{ url($penelitian->thumbnail) }}" style="width:100px"></td>
                                                 @if (strlen($penelitian->teks) > 100)
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($penelitian->teks), 0, 100) . '...' )}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($penelitian->teks), 0, 100) . '...') }}
                                                     </td>
                                                 @else
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($penelitian->teks), 0, 100))}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($penelitian->teks), 0, 100)) }}
                                                     </td>
                                                 @endif
                                                 <td>{{ $penelitian->release_date }}</td>
@@ -88,7 +88,7 @@
                                                     @else
                                                         <td>Belum Rilis</td>
                                                     @endif
-                                                @else ($penelitian->deleted_at != "")
+                                                @else
                                                     <td>Terhapus</td>
                                                 @endif
                                                 @if ($penelitian->deleted_at == '')

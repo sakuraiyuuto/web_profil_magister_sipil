@@ -77,7 +77,6 @@
                                                             <td>Belum Rilis</td>
                                                         @endif
                                                     @else
-                                                        ($aplikasiIntegrasi->deleted_at != "")
                                                         <td>Terhapus</td>
                                                     @endif
                                                     @if ($aplikasiIntegrasi->deleted_at == '')

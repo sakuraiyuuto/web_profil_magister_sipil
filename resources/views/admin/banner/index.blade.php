@@ -72,7 +72,7 @@
                                                         @else
                                                             <td>Belum Rilis</td>
                                                         @endif
-                                                    @else ($banner->deleted_at != "")
+                                                    @else
                                                         <td>Terhapus</td>
                                                     @endif
                                                     @if ($banner->deleted_at == '')

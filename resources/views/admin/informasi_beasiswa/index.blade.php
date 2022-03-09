@@ -72,11 +72,11 @@
                                                 </td>
                                                 @if (strlen($informasiBeasiswa->teks) > 100)
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($informasiBeasiswa->teks), 0, 100) . '...' )}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($informasiBeasiswa->teks), 0, 100) . '...') }}
                                                     </td>
                                                 @else
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($informasiBeasiswa->teks), 0, 100))}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($informasiBeasiswa->teks), 0, 100)) }}
                                                     </td>
                                                 @endif
                                                 <td>{{ $informasiBeasiswa->release_date }}</td>
@@ -86,7 +86,7 @@
                                                     @else
                                                         <td>Belum Rilis</td>
                                                     @endif
-                                                @else ($informasiBeasiswa->deleted_at != "")
+                                                @else
                                                     <td>Terhapus</td>
                                                 @endif
                                                 @if ($informasiBeasiswa->deleted_at == '')

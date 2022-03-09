@@ -314,9 +314,9 @@
                         </li>
 
                         <li
-                            class="nav-item {{ set_open(['seminar_proposal.index', 'tesis.index', 'kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','dokumen_prodi.index','pengabdian_kepada_masyarakat.create','jurnal.index']) }}">
+                            class="nav-item {{ set_open(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','dokumen_prodi.index','pengabdian_kepada_masyarakat.create','jurnal.index']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['seminar_proposal.index', 'tesis.index', 'kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','dokumen_prodi.index','pengabdian_kepada_masyarakat.create','jurnal.index']) }}">
+                                class="nav-link {{ set_active(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','dokumen_prodi.index','pengabdian_kepada_masyarakat.create','jurnal.index']) }}">
 
                                 <i class="nav-icon fas fa-school"></i>
                                 <p>
@@ -369,12 +369,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                <a href="{{ url('admin/dokumen_prodi') }}"
-                                     class="nav-link {{ set_active(['dokumen_prodi.index']) }}">
-                                     <i class="far fa{{ set_dot(['tesis.index']) }}-circle nav-icon"></i>
-                                    <p>Dokumen Prodi</p>
-                                 </a>
-                                 </li>
+                                    <a href="{{ url('admin/dokumen_prodi') }}"
+                                        class="nav-link {{ set_active(['dokumen_prodi.index']) }}">
+                                        <i class="far fa{{ set_dot(['tesis.index']) }}-circle nav-icon"></i>
+                                        <p>Dokumen Prodi</p>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ url('admin/kuliah_kerja_lapangan') }}"
                                         class="nav-link {{ set_active(['kuliah_kerja_lapangan.index']) }}">
@@ -397,11 +397,11 @@
                                         <p>Jurnal Mahasiswa & Dosen</p>
                                     </a>
                                 </li>
-                             
+
                             </ul>
                         </li>
 
-                
+
 
                         <li
                             class="nav-item {{ set_open(['jadwal_kuliah.index','jadwal_ujian.index','jadwal_kegiatan.index','jadwal_kegiatan.create','jadwal_kegiatan.edit']) }}">
@@ -444,9 +444,9 @@
                             </ul>
                         </li>
                         <li
-                            class="nav-item {{ set_open(['himpunan_mahasiswa.index','himpunan_mahasiswa.edit','himpunan_mahasiswa.create','layanan_mahasiswa.index','layanan_mahasiswa.edit','layanan_mahasiswa.create','informasi_beasiswa.index','informasi_beasiswa.edit','informasi_beasiswa.create','profil_lulusan.index','tata_tertib_peraturan.index']) }}">
+                            class="nav-item {{ set_open(['layanan_mahasiswa.index','layanan_mahasiswa.edit','layanan_mahasiswa.create','informasi_beasiswa.index','informasi_beasiswa.edit','informasi_beasiswa.create','profil_lulusan.index','tata_tertib_peraturan.index']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['himpunan_mahasiswa.index','himpunan_mahasiswa.edit','himpunan_mahasiswa.create','layanan_mahasiswa.index','layanan_mahasiswa.edit','layanan_mahasiswa.create','informasi_beasiswa.index','informasi_beasiswa.edit','informasi_beasiswa.create','profil_lulusan.index','tata_tertib_peraturan.index']) }}">
+                                class="nav-link {{ set_active(['layanan_mahasiswa.index','layanan_mahasiswa.edit','layanan_mahasiswa.create','informasi_beasiswa.index','informasi_beasiswa.edit','informasi_beasiswa.create','profil_lulusan.index','tata_tertib_peraturan.index']) }}">
                                 <i class="nav-icon fas fa-user-graduate"></i>
                                 <p>
                                     Mahasiswa & Alumni
@@ -454,16 +454,6 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview  space-maju">
-
-                                <li class="nav-item">
-                                    <a href="{{ url('admin/himpunan_mahasiswa') }}"
-                                        class="nav-link {{ set_active(['himpunan_mahasiswa.index', 'himpunan_mahasiswa.edit', 'himpunan_mahasiswa.create']) }}">
-                                        <i
-                                            class="far fa{{ set_dot(['himpunan_mahasiswa.index', 'himpunan_mahasiswa.edit', 'himpunan_mahasiswa.create']) }}-circle nav-icon"></i>
-                                        <p>Himpunan Mahasiswa</p>
-                                    </a>
-                                </li>
-
                                 <li class="nav-item">
                                     <a href="{{ url('admin/layanan_mahasiswa') }}"
                                         class="nav-link {{ set_active(['layanan_mahasiswa.index', 'layanan_mahasiswa.edit', 'layanan_mahasiswa.create']) }}">
@@ -526,8 +516,9 @@
 
                                 <li class="nav-item">
                                     <a href="{{ url('admin/laboratorium') }}"
-                                        class="nav-link {{ set_active(['laboratorium.index','laboratorium.edit','laboratorium.create']) }}">
-                                        <i class="far fa{{ set_dot(['laboratorium.index','laboratorium.edit','laboratorium.create']) }}-circle nav-icon"></i>
+                                        class="nav-link {{ set_active(['laboratorium.index', 'laboratorium.edit', 'laboratorium.create']) }}">
+                                        <i
+                                            class="far fa{{ set_dot(['laboratorium.index', 'laboratorium.edit', 'laboratorium.create']) }}-circle nav-icon"></i>
                                         <p>Laboratorium</p>
                                     </a>
                                 </li>
@@ -551,7 +542,7 @@
 
                             </ul>
                         </li>
-                      
+
                         <li class="nav-item">
                             <a href="{{ url('admin/berita') }}"
                                 class="nav-link {{ request()->is('admin/berita/' . $berita->id . '/edit') ? 'active' : '' }} {{ set_active(['berita.index', 'berita.create']) }}">

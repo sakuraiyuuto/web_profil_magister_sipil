@@ -70,11 +70,11 @@
                                                 <td><img src="{{ url($berita->thumbnail) }}" style="width:100px"></td>
                                                 @if (strlen($berita->teks) > 100)
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($berita->teks), 0, 100) . '...' )}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($berita->teks), 0, 100) . '...') }}
                                                     </td>
                                                 @else
                                                     <td>
-                                                        {{ str_replace("&nbsp;", "",substr(strip_tags($berita->teks), 0, 100))}}
+                                                        {{ str_replace('&nbsp;', '', substr(strip_tags($berita->teks), 0, 100)) }}
                                                     </td>
                                                 @endif
                                                 <td>{{ $berita->release_date }}</td>
@@ -84,7 +84,7 @@
                                                     @else
                                                         <td>Belum Rilis</td>
                                                     @endif
-                                                @else ($berita->deleted_at != "")
+                                                @else
                                                     <td>Terhapus</td>
                                                 @endif
                                                 @if ($berita->deleted_at == '')
