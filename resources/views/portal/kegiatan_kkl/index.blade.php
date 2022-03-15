@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Pengabdian Kepada Masyarakat - Magister Teknik Sipil UNTAN')
+@section('title', 'Kuliah Kerja Lapangan - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -11,12 +11,12 @@
                     <!--KF INR BANNER DES Wrap Start-->
                     <div class="kf_inr_ban_des">
                         <div class="inr_banner_heading">
-                            <h3>Pengabdian Kepada Masyarakat</h3>
+                            <h3>Kuliah Kerja Lapangan</h3>
                         </div>
                         <div class="kf_inr_breadcrumb">
                             <ul>
                                 <li><a href="{{ url('') }}">Beranda</a></li>
-                                <li><a>Pengabdian Kepada Masyarakat</a></li>
+                                <li><a>Kuliah Kerja Lapangan</a></li>
                             </ul>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                     <th>
                                         No
                                     </th>
-                                    <th>Daftar Pengabdian Kepada Masyarakat</th>
+                                    <th>Daftar Kuliah Kerja Lapangan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,9 +68,9 @@
                                                                     href="{{ url($pengabdianKeMasyarakat->slug) }}"><span>{{ $pengabdianKeMasyarakat->judul }}</span></a>
                                                             </h4>
                                                             <ul class="kf_event_list_links">
-                                                                <li><a>Pelaku PKM :
+                                                                <li><a>Pelaku KKL :
                                                                         {{ $pengabdianKeMasyarakat->author }}</a></li><br>
-                                                                <li><a>Tahun PKM :
+                                                                <li><a>Tahun KKL :
                                                                         {{ $pengabdianKeMasyarakat->tahun }}</a></li>
                                                             </ul>
                                                             <a class="readmore"

@@ -142,7 +142,7 @@
                                         </ul>
                                     </li>
                                     <li
-                                        class=" {{ request()->is('kelompok_keahlian_dosen','dokumen_prodi','kuliah_kerja_lapangan','seminar_proposal','tesis','dokumen_prodi/*','hasil_karya','jurnal','kurikulum','kalender_akademik','penelitian','pengabdian_kepada_masyarakat','kelompok_keahlian_dosen/*','hasil_karya/*','jurnal/*','kurikulum/*','kalender_akademik/*','penelitian/*','pengabdian_kepada_masyarakat/*','buku','jurnal','haki','prosiding')? 'active': '' }} ">
+                                        class=" {{ request()->is('kelompok_keahlian_dosen','dokumen_prodi','kuliah_kerja_lapangan','seminar_proposal','tesis','dokumen_prodi/*','hasil_karya','jurnal','kurikulum','kalender_akademik','penelitian','kegiatan_kkl','kelompok_keahlian_dosen/*','hasil_karya/*','jurnal/*','kurikulum/*','kalender_akademik/*','penelitian/*','kegiatan_kkl/*','buku','jurnal','haki','prosiding')? 'active': '' }} ">
                                         <span class="submenu">Akademik <i class="fa fa-angle-down"></i></span>
                                         <ul class="submenu">
 
@@ -155,9 +155,8 @@
                                                     href="{{ url('hasil_karya') }}">Hasil Karya</a></li>
                                             <li><a class="{{ request()->is('penelitian/*') ? 'is-active' : '' }}"
                                                     href="{{ url('penelitian') }}">Penelitian</a></li>
-                                            <li><a class="{{ request()->is('pengabdian_kepada_masyarakat/*') ? 'is-active' : '' }}"
-                                                    href="{{ url('pengabdian_kepada_masyarakat') }}">Pengabdian
-                                                    Kepada Masyarakat</a></li>
+                                            <li><a class="{{ request()->is('kegiatan_kkl/*') ? 'is-active' : '' }}"
+                                                    href="{{ url('kegiatan_kkl') }}">Kuliah Kerja Lapangan</a></li>
                                             <li><a href="{{ url('dokumen_prodi') }}">Dokumen
                                                     Prodi</a>
                                             </li>
@@ -165,10 +164,11 @@
                                                     class="{{ request()->is('kuliah_kerja_lapangan', 'tesis') ? 'is-active' : '' }}">SOP</a>
                                                 <ul id="drop-content2">
                                                     <li><a class="{{ request()->is('kuliah_kerja_lapangan') ? 'sub-active' : '' }}"
-                                                            href="{{ url('kuliah_kerja_lapangan') }}">Kuliah Kerja
+                                                            href="{{ url('kuliah_kerja_lapangan') }}">SOP Kuliah
+                                                            Kerja
                                                             Lapangan</a></li>
                                                     <li><a class="{{ request()->is('tesis') ? 'sub-active' : '' }}"
-                                                            href="{{ url('tesis') }}">Tesis</a></li>
+                                                            href="{{ url('tesis') }}">SOP Tesis</a></li>
 
                                                 </ul>
                                             </li>
@@ -195,6 +195,8 @@
                                                 class="fa fa-angle-down"></i></span>
                                         <ul class="submenu">
 
+                                    </li>
+                                    <li><a href="{{ url('himpunan_mahasiswa') }}">Himpunan Mahasiswa</a>
                                     </li>
                                     <li><a class="{{ request()->is('layanan_mahasiswa/*') ? 'is-active' : '' }}"
                                             href="{{ url('layanan_mahasiswa') }}">Layanan Mahasiswa</a></li>

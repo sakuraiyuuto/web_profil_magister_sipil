@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Pengabdian Kepada Masyarakat - Magister Teknik Sipil UNTAN')
+@section('title', 'Kuliah Kerja Lapangan - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -11,13 +11,13 @@
                     <!--KF INR BANNER DES Wrap Start-->
                     <div class="kf_inr_ban_des">
                         <div class="inr_banner_heading">
-                            <h3>Detail Pengabdian Kepada Masyarakat</h3>
+                            <h3>Detail Kuliah Kerja Lapangan</h3>
                         </div>
 
                         <div class="kf_inr_breadcrumb">
                             <ul>
                                 <li><a href="{{ url('') }}">Beranda</a></li>
-                                <li><a href="{{ url('/pengabdian_kepada_masyarakat') }}">Pengabdian Kepada Masyarakat</a>
+                                <li><a href="{{ url('/kegiatan_kkl') }}">Kuliah Kerja Lapangan</a>
                                 </li>
                             </ul>
                         </div>
@@ -44,7 +44,7 @@
                             <div class="blog_detail_thumbnail">
                                 <figure>
                                     <img src="{{ url($pengabdianKeMasyarakat->thumbnail) }}" alt="" />
-                                    <figcaption><a href="#">Pengabdian Kepada Masyarakat</a></figcaption>
+                                    <figcaption><a href="#">Kuliah Kerja Lapangan</a></figcaption>
                                 </figure>
                             </div>
                             <!-- BLOG DETAIL THUMBNAIL END-->
@@ -60,11 +60,11 @@
                                     </li>
                                 </ul>
                                 <ul class="blog_detail_meta">
-                                    <li><a href="#">Pelaku PKM : {{ $pengabdianKeMasyarakat->author }}</a>
+                                    <li><a href="#">Pelaku KKL : {{ $pengabdianKeMasyarakat->author }}</a>
                                     </li>
                                 </ul>
                                 <ul class="blog_detail_meta">
-                                    <li><a href="#">Tahun PKM : {{ $pengabdianKeMasyarakat->tahun }}</a>
+                                    <li><a href="#">Tahun KKL : {{ $pengabdianKeMasyarakat->tahun }}</a>
                                     </li>
                                 </ul>
 

@@ -314,9 +314,9 @@
                         </li>
 
                         <li
-                            class="nav-item {{ set_open(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','dokumen_prodi.index','pengabdian_kepada_masyarakat.create','jurnal.index']) }}">
+                            class="nav-item {{ set_open(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','kegiatan_kkl.index','kegiatan_kkl.edit','dokumen_prodi.index','kegiatan_kkl.create','jurnal.index']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','dokumen_prodi.index','pengabdian_kepada_masyarakat.create','jurnal.index']) }}">
+                                class="nav-link {{ set_active(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','kegiatan_kkl.index','kegiatan_kkl.edit','dokumen_prodi.index','kegiatan_kkl.create','jurnal.index']) }}">
 
                                 <i class="nav-icon fas fa-school"></i>
                                 <p>
@@ -361,17 +361,18 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/pengabdian_kepada_masyarakat') }}"
-                                        class="nav-link {{ set_active(['pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','pengabdian_kepada_masyarakat.create']) }}">
+                                    <a href="{{ url('admin/kegiatan_kkl') }}"
+                                        class="nav-link {{ set_active(['kegiatan_kkl.index', 'kegiatan_kkl.edit', 'kegiatan_kkl.create']) }}">
                                         <i
-                                            class="far fa{{ set_dot(['pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','pengabdian_kepada_masyarakat.create']) }}-circle nav-icon"></i>
-                                        <p>Pengabdian Kepada Masyarakat</p>
+                                            class="far fa{{ set_dot(['kegiatan_kkl.index', 'kegiatan_kkl.edit', 'kegiatan_kkl.create']) }}-circle nav-icon"></i>
+                                        <p>Kuliah Kerja Lapangan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dokumen_prodi') }}"
                                         class="nav-link {{ set_active(['dokumen_prodi.index']) }}">
-                                        <i class="far fa{{ set_dot(['tesis.index']) }}-circle nav-icon"></i>
+                                        <i
+                                            class="far fa{{ set_dot(['dokumen_prodi.index']) }}-circle nav-icon"></i>
                                         <p>Dokumen Prodi</p>
                                     </a>
                                 </li>
@@ -380,14 +381,14 @@
                                         class="nav-link {{ set_active(['kuliah_kerja_lapangan.index']) }}">
                                         <i
                                             class="far fa{{ set_dot(['kuliah_kerja_lapangan.index']) }}-circle nav-icon"></i>
-                                        <p>Kuliah Kerja Lapangan</p>
+                                        <p>SOP Kuliah Kerja Lapangan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('admin/tesis') }}"
                                         class="nav-link {{ set_active(['tesis.index']) }}">
                                         <i class="far fa{{ set_dot(['tesis.index']) }}-circle nav-icon"></i>
-                                        <p>Tesis</p>
+                                        <p>SOP Tesis</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -444,9 +445,9 @@
                             </ul>
                         </li>
                         <li
-                            class="nav-item {{ set_open(['layanan_mahasiswa.index','layanan_mahasiswa.edit','layanan_mahasiswa.create','informasi_beasiswa.index','informasi_beasiswa.edit','informasi_beasiswa.create','profil_lulusan.index','tata_tertib_peraturan.index']) }}">
+                            class="nav-item {{ set_open(['himpunan_mahasiswa.index','himpunan_mahasiswa.edit','himpunan_mahasiswa.create','layanan_mahasiswa.index','layanan_mahasiswa.edit','layanan_mahasiswa.create','informasi_beasiswa.index','informasi_beasiswa.edit','informasi_beasiswa.create','profil_lulusan.index','tata_tertib_peraturan.index']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['layanan_mahasiswa.index','layanan_mahasiswa.edit','layanan_mahasiswa.create','informasi_beasiswa.index','informasi_beasiswa.edit','informasi_beasiswa.create','profil_lulusan.index','tata_tertib_peraturan.index']) }}">
+                                class="nav-link {{ set_active(['himpunan_mahasiswa.index','himpunan_mahasiswa.edit','himpunan_mahasiswa.create','layanan_mahasiswa.index','layanan_mahasiswa.edit','layanan_mahasiswa.create','informasi_beasiswa.index','informasi_beasiswa.edit','informasi_beasiswa.create','profil_lulusan.index','tata_tertib_peraturan.index']) }}">
                                 <i class="nav-icon fas fa-user-graduate"></i>
                                 <p>
                                     Mahasiswa & Alumni
@@ -454,6 +455,16 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview  space-maju">
+
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/himpunan_mahasiswa') }}"
+                                        class="nav-link {{ set_active(['himpunan_mahasiswa.index', 'himpunan_mahasiswa.edit', 'himpunan_mahasiswa.create']) }}">
+                                        <i
+                                            class="far fa{{ set_dot(['himpunan_mahasiswa.index', 'himpunan_mahasiswa.edit', 'himpunan_mahasiswa.create']) }}-circle nav-icon"></i>
+                                        <p>Himpunan Mahasiswa</p>
+                                    </a>
+                                </li>
+
                                 <li class="nav-item">
                                     <a href="{{ url('admin/layanan_mahasiswa') }}"
                                         class="nav-link {{ set_active(['layanan_mahasiswa.index', 'layanan_mahasiswa.edit', 'layanan_mahasiswa.create']) }}">

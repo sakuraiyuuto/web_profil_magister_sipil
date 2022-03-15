@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Pengabdian Kepada Masyarakat')
+@section('title', 'Kuliah Kerja Lapangan')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Pengabdian Kepada Masyarakat</h1>
+                        <h1 class="m-0">Kuliah Kerja Lapangan</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -23,15 +23,15 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Data Pengabdian Kepada Masyarakat</h3>
+                                <h3 class="card-title">Edit Data Kuliah Kerja Lapangan</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <!-- form start -->
                                     <form class="from-prevent-multiple-submits"
-                                        action="{{ route('pengabdian_kepada_masyarakat.update', $pengabdianKeMasyarakat) }}"
-                                        method="POST" enctype="multipart/form-data">
+                                        action="{{ route('kegiatan_kkl.update', $pengabdianKeMasyarakat) }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @method('patch')
                                         @csrf
                                         <div class="card-body">
@@ -45,14 +45,14 @@
                                             <div class="form-group">
                                                 <label for="author">Pelaku PKM</label>
                                                 <input type="text" class="form-control" id="author" name="author"
-                                                    placeholder="Masukkan Pelaku PKM" value="{{ $pengabdianKeMasyarakat->author }}"
-                                                    required>
+                                                    placeholder="Masukkan Pelaku PKM"
+                                                    value="{{ $pengabdianKeMasyarakat->author }}" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="tahun">Tahun</label>
-                                                <input type="text" class="form-control" id="tahun" name="tahun"
-                                                    placeholder="Masukkan Tahun Penelitian" value="{{ $pengabdianKeMasyarakat->tahun }}"
-                                                    required>
+                                                <input type="number" class="form-control" id="tahun" name="tahun"
+                                                    placeholder="Masukkan Tahun Penelitian"
+                                                    value="{{ $pengabdianKeMasyarakat->tahun }}" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="thumbnail">Thumbnail (Maksimal 2MB)</label>
@@ -66,8 +66,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="teks">Teks</label>
-                                                <textarea id="teks" placeholder="Masukkan Deskripsi"
-                                                    name="teks">{{ $pengabdianKeMasyarakat->teks }}</textarea>
+                                                <textarea id="teks" placeholder="Masukkan Deskripsi" name="teks">{{ $pengabdianKeMasyarakat->teks }}</textarea>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <label for="release_date">Tanggal Rilis</label>

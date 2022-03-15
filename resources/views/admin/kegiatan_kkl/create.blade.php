@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Pengabdian Kepada Masyarakat')
+@section('title', 'Kuliah Kerja Lapangan')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Pengabdian Kepada Masyarakat</h1>
+                        <h1 class="m-0">Kuliah Kerja Lapangan</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -22,15 +22,14 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Tambah Data Pengabdian Kepada Masyarakat</h3>
+                                <h3 class="card-title">Tambah Data Kuliah Kerja Lapangan</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <!-- form start -->
-                                    <form class="from-prevent-multiple-submits"
-                                        action="{{ route('pengabdian_kepada_masyarakat.store') }}" method="POST"
-                                        id="ckeditorForm" enctype="multipart/form-data">
+                                    <form class="from-prevent-multiple-submits" action="{{ route('kegiatan_kkl.store') }}"
+                                        method="POST" id="ckeditorForm" enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-body">
                                             <div class="form-group">
@@ -39,14 +38,14 @@
                                                     placeholder="Masukkan Judul" value="" required maxlength="255">
                                             </div>
                                             <div class="form-group">
-                                                <label for="author">Pelaku PKM</label>
+                                                <label for="author">Pelaku KKL</label>
                                                 <input type="text" class="form-control" id="author" name="author"
-                                                    placeholder="Masukkan Pelaku PKM" value="" required maxlength="255">
+                                                    placeholder="Masukkan Pelaku KKL" value="" required maxlength="255">
                                             </div>
                                             <div class="form-group">
                                                 <label for="tahun">Tahun</label>
                                                 <input type="number" class="form-control" id="tahun" name="tahun"
-                                                    placeholder="Masukkan Tahun Penelitian" value="" required maxlength="4">
+                                                    placeholder="Masukkan Tahun Kegiatan" value="" required maxlength="4">
                                             </div>
                                             <div class="form-group">
                                                 <label for="thumbnail">Thumbnail (Maksimal 2MB)</label>
@@ -59,8 +58,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="teks">Teks</label>
-                                                <textarea id="teks" placeholder="Masukkan Teks Pengabdian Kepada Masyarakat"
-                                                    name="teks" class="ck_editor_txt" id="ck_editor_txt"></textarea>
+                                                <textarea id="teks" placeholder="Masukkan Teks Kuliah Kerja Lapangan" name="teks" class="ck_editor_txt"
+                                                    id="ck_editor_txt"></textarea>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <label for="release_date">Tanggal Rilis</label>

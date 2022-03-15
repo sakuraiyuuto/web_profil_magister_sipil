@@ -29,7 +29,7 @@ class PengabdianKeMasyarakatController extends Controller
         $session_user = Auth::user();
         $pengabdianKeMasyarakats = PengabdianKeMasyarakat::withTrashed()->get()
             ->sortDesc();
-        return view('admin/pengabdian_kepada_masyarakat.index', compact('pengabdianKeMasyarakats', 'session_user'));
+        return view('admin/kegiatan_kkl.index', compact('pengabdianKeMasyarakats', 'session_user'));
     }
 
     /**
@@ -40,7 +40,7 @@ class PengabdianKeMasyarakatController extends Controller
     public function create()
     {
         $session_user = Auth::user();
-        return view('admin/pengabdian_kepada_masyarakat.create', compact('session_user'));
+        return view('admin/kegiatan_kkl.create', compact('session_user'));
     }
 
     /**
@@ -61,9 +61,9 @@ class PengabdianKeMasyarakatController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/admin/pengabdian_kepada_masyarakat')->with('alert', 'Ada kesalahan data, coba lagi.');
+            return redirect('/admin/kegiatan_kkl')->with('alert', 'Ada kesalahan data, coba lagi.');
         } else {
-            $path_url = 'images/pengabdian_kepada_masyarakat/';
+            $path_url = 'images/kegiatan_kkl/';
 
             $originName = $request->thumbnail->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -82,15 +82,15 @@ class PengabdianKeMasyarakatController extends Controller
             $slug = Str::slug($request->judul) . '_' . time();
 
             PengabdianKeMasyarakat::create([
-                'thumbnail' => 'images/pengabdian_kepada_masyarakat/' . $fileName,
+                'thumbnail' => 'images/kegiatan_kkl/' . $fileName,
                 'judul' => $request->judul,
                 'author' => $request->author,
                 'tahun' => $request->tahun,
                 'teks' => $request->teks,
-                'slug' => 'pengabdian_kepada_masyarakat/' . $slug,
+                'slug' => 'kegiatan_kkl/' . $slug,
                 'release_date' => $request->release_date,
             ]);
-            return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Ditambahkan');
+            return redirect('/admin/kegiatan_kkl')->with('status', 'Kuliah Kerja Lapangan Berhasil Ditambahkan');
         }
     }
 
@@ -116,7 +116,7 @@ class PengabdianKeMasyarakatController extends Controller
         $session_user = Auth::user();
         $pengabdianKeMasyarakat = PengabdianKeMasyarakat::all()->firstWhere('id', $id);
 
-        return view('admin.pengabdian_kepada_masyarakat.edit', compact('pengabdianKeMasyarakat', 'session_user'));
+        return view('admin.kegiatan_kkl.edit', compact('pengabdianKeMasyarakat', 'session_user'));
     }
 
     /**
@@ -139,7 +139,7 @@ class PengabdianKeMasyarakatController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/admin/pengabdian_kepada_masyarakat')->with('alert', 'Ada kesalahan data, coba lagi.');
+            return redirect('/admin/kegiatan_kkl')->with('alert', 'Ada kesalahan data, coba lagi.');
         } else {
             $pengabdianKeMasyarakats = PengabdianKeMasyarakat::all()
                 ->where('id', $request->id)
@@ -157,14 +157,14 @@ class PengabdianKeMasyarakatController extends Controller
                         'teks' => $request->teks,
                         'release_date' => $request->release_date,
                     ]);
-                return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Diubah');
+                return redirect('/admin/kegiatan_kkl')->with('status', 'Kuliah Kerja Lapangan Berhasil Diubah');
             } else {
                 $file = $pengabdianKeMasyarakats->thumbnail;
                 if (file_exists($file)) {
                     @unlink($file);
                 }
 
-                $path_url = 'images/pengabdian_kepada_masyarakat/';
+                $path_url = 'images/kegiatan_kkl/';
 
                 $originName = $request->thumbnail->getClientOriginalName();
                 $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -182,14 +182,14 @@ class PengabdianKeMasyarakatController extends Controller
 
                 PengabdianKeMasyarakat::where('id', $request->id)
                     ->update([
-                        'thumbnail' => 'images/pengabdian_kepada_masyarakat/' . $fileName,
+                        'thumbnail' => 'images/kegiatan_kkl/' . $fileName,
                         'judul' => $request->judul,
                         'author' => $request->author,
                         'tahun' => $request->tahun,
                         'teks' => $request->teks,
                         'release_date' => $request->release_date,
                     ]);
-                return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Diubah');
+                return redirect('/admin/kegiatan_kkl')->with('status', 'Kuliah Kerja Lapangan Berhasil Diubah');
             }
         }
     }
@@ -203,7 +203,7 @@ class PengabdianKeMasyarakatController extends Controller
     public function destroy($id)
     {
         PengabdianKeMasyarakat::destroy($id);
-        return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Dihapus');
+        return redirect('/admin/kegiatan_kkl')->with('status', 'Kuliah Kerja Lapangan Berhasil Dihapus');
     }
 
     public function restore($id)
@@ -213,7 +213,7 @@ class PengabdianKeMasyarakatController extends Controller
             ->first();
 
         $pengabdianKeMasyarakat->restore();
-        return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Direstore');
+        return redirect('/admin/kegiatan_kkl')->with('status', 'Kuliah Kerja Lapangan Berhasil Direstore');
     }
 
     public function delete($id)
@@ -229,7 +229,7 @@ class PengabdianKeMasyarakatController extends Controller
         }
 
         $pengabdianKeMasyarakat->forceDelete();
-        return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Dihapus Permanen');
+        return redirect('/admin/kegiatan_kkl')->with('status', 'Kuliah Kerja Lapangan Berhasil Dihapus Permanen');
     }
 
     public function menuPengabdianKeMasyarakat()
@@ -254,7 +254,7 @@ class PengabdianKeMasyarakatController extends Controller
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.pengabdian_kepada_masyarakat.index',  compact('pengabdianKeMasyarakats', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.kegiatan_kkl.index',  compact('pengabdianKeMasyarakats', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
     }
 
     public function menuDetailPengabdianKeMasyarakat($slug)
@@ -262,11 +262,11 @@ class PengabdianKeMasyarakatController extends Controller
         $kontak = Kontak::all()->first();
 
         $profilSingkat = ProfilSingkat::all()->first();
-        $pengabdianKeMasyarakat = PengabdianKeMasyarakat::where('slug', 'pengabdian_kepada_masyarakat/' . $slug)
+        $pengabdianKeMasyarakat = PengabdianKeMasyarakat::where('slug', 'kegiatan_kkl/' . $slug)
             ->firstOrFail();
 
         $pengabdianKeMasyarakats = PengabdianKeMasyarakat::where('release_date', '<=', date('Y-m-d'))
-            ->where('slug', '!=', 'pengabdian_kepada_masyarakat/' . $slug)
+            ->where('slug', '!=', 'kegiatan_kkl/' . $slug)
             ->take(2)
             ->orderBy('release_date', 'DESC');
         $informasiTerbarus = InformasiTerbaru::informasiTerbaru()
@@ -281,6 +281,6 @@ class PengabdianKeMasyarakatController extends Controller
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.pengabdian_kepada_masyarakat.detail',  compact('pengabdianKeMasyarakat', 'pengabdianKeMasyarakats', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.kegiatan_kkl.detail',  compact('pengabdianKeMasyarakat', 'pengabdianKeMasyarakats', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
     }
 }

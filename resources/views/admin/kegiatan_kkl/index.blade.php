@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Pengabdian Kepada Masyarakat')
+@section('title', 'Kuliah Kerja Lapangan')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Pengabdian Kepada Masyarakat</h1>
+                        <h1 class="m-0">Kuliah Kerja Lapangan</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -36,21 +36,20 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Data Pengabdian Kepada Masyarakat</h3>
+                                <h3 class="card-title">Data Kuliah Kerja Lapangan</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 text-left">
-                                        <a href="{{ url('/admin/pengabdian_kepada_masyarakat/create') }}" type="button"
+                                        <a href="{{ url('/admin/kegiatan_kkl/create') }}" type="button"
                                             class="btn btn-success mb-3">
                                             <i class="fa fa-plus-circle mr-2"></i>Tambah Data
                                         </a>
                                     </div>
                                 </div>
 
-                                <table id="tabel_pengabdian_kepada_masyarakat"
-                                    class="table table-bordered table-striped mt-2">
+                                <table id="tabel_kegiatan_kkl" class="table table-bordered table-striped mt-2">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -95,11 +94,11 @@
                                                 @endif
                                                 @if ($pengabdianKeMasyarakat->deleted_at == '')
                                                     <td>
-                                                        <a href="{{ route('pengabdian_kepada_masyarakat.edit', $pengabdianKeMasyarakat) }}"
+                                                        <a href="{{ route('kegiatan_kkl.edit', $pengabdianKeMasyarakat) }}"
                                                             class="btn btn-warning open-formModalEdit"><i
                                                                 class="fa fa-edit"></i> Edit</a>
                                                         <form
-                                                            action="{{ route('pengabdian_kepada_masyarakat.destroy', $pengabdianKeMasyarakat) }}"
+                                                            action="{{ route('kegiatan_kkl.destroy', $pengabdianKeMasyarakat) }}"
                                                             method="post">
                                                             @method('delete')
                                                             @csrf
@@ -111,7 +110,7 @@
                                                 @else
                                                     <td>
                                                         <form
-                                                            action="{{ url('/admin/pengabdian_kepada_masyarakat/' . $pengabdianKeMasyarakat->id . '/restore') }}"
+                                                            action="{{ url('/admin/kegiatan_kkl/' . $pengabdianKeMasyarakat->id . '/restore') }}"
                                                             method="post">
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary"
@@ -120,7 +119,7 @@
                                                             </button>
                                                         </form>
                                                         <form
-                                                            action="{{ url('/admin/pengabdian_kepada_masyarakat/' . $pengabdianKeMasyarakat->id . '/delete') }}"
+                                                            action="{{ url('/admin/kegiatan_kkl/' . $pengabdianKeMasyarakat->id . '/delete') }}"
                                                             method="post">
                                                             @csrf
                                                             <button type="submit" class="btn btn-danger"
@@ -145,7 +144,7 @@
     <!--Data Table -->
     <script>
         $(function() {
-            $("#tabel_pengabdian_kepada_masyarakat").DataTable({
+            $("#tabel_kegiatan_kkl").DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": true,
@@ -154,7 +153,7 @@
                 "autoWidth": false,
                 "responsive": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#tabel_pengabdian_kepada_masyarakat_wrapper .col-md-6:eq(0)');
+            }).buttons().container().appendTo('#tabel_kegiatan_kkl_wrapper .col-md-6:eq(0)');
         });
     </script>
 @endsection
