@@ -154,7 +154,7 @@
                     <!-- HEADING 2 START-->
                     <div class="col-md-12">
                         <div class="kf_edu2_heading2">
-                            <h3>Pengabdian Kepada Masyarakat</h3>
+                            <h3>Kuliah Kerja Lapangan</h3>
                         </div>
                     </div>
                     <!-- HEADING 2 END-->
@@ -231,7 +231,7 @@
                 </div>
                 @endif
                 <div class="view-all">
-                    <a class="button-pkm" href="{{ url('/pengabdian_kepada_masyarakat') }}">Semua PKM</a>
+                    <a class="button-pkm" href="{{ url('/kegiatan_kkl') }}">Semua KKL</a>
                 </div>
             </div>
     </div>
