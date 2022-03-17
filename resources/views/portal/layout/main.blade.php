@@ -161,17 +161,31 @@
                                                     Prodi</a>
                                             </li>
                                             <li class="dropbtn icon2 hidden-menu"><a
-                                                    class="{{ request()->is('kuliah_kerja_lapangan', 'tesis') ? 'is-active' : '' }}">SOP</a>
+                                                    class="{{ request()->is('kuliah_kerja_lapangan', 'tesis') ? 'is-active' : '' }}"
+                                                   >SOP</a>
                                                 <ul id="drop-content2">
-                                                    <li><a class="{{ request()->is('kuliah_kerja_lapangan') ? 'sub-active' : '' }}"
+                                                 <li><a class="{{ request()->is('kuliah_kerja_lapangan') ? 'sub-active' : '' }}"
                                                             href="{{ url('kuliah_kerja_lapangan') }}">SOP Kuliah
                                                             Kerja
                                                             Lapangan</a></li>
                                                     <li><a class="{{ request()->is('tesis') ? 'sub-active' : '' }}"
                                                             href="{{ url('tesis') }}">SOP Tesis</a></li>
-
+                                                  
                                                 </ul>
                                             </li>
+                                            <li class="hidden-menu2 "><span class="submenu level {{ request()->is('kuliah_kerja_lapangan', 'tesis') ? 'active' : '' }}"> SOP <i
+                                                        class="fa fa-angle-down"></i></span>
+                                                <ul class="submenu">
+                                                   <li><a class="{{ request()->is('kuliah_kerja_lapangan') ? 'sub-active' : '' }}"
+                                                            href="{{ url('kuliah_kerja_lapangan') }}">SOP Kuliah
+                                                            Kerja
+                                                            Lapangan</a></li>
+                                                    <li><a class="{{ request()->is('tesis') ? 'sub-active' : '' }}"
+                                                            href="{{ url('tesis') }}">SOP Tesis</a></li>
+                                                  
+                                                  
+                                                </ul>
+                                            </li>     
                                             <li><a class="{{ request()->is('jurnal/*') ? 'is-active' : '' }}"
                                                     href="{{ url('jurnal') }}">Jurnal Mahasiswa & Dosen</a></li>
                                         </ul>
