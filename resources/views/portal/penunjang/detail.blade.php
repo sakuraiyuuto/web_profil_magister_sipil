@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Laboratorium - Magister Teknik Sipil UNTAN')
+@section('title', 'Penunjang - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -11,13 +11,13 @@
                     <!--KF INR BANNER DES Wrap Start-->
                     <div class="kf_inr_ban_des">
                         <div class="inr_banner_heading">
-                            <h3>{{ $laboratorium->nama }}</h3>
+                            <h3>{{ $penunjang->nama }}</h3>
                         </div>
 
                         <div class="kf_inr_breadcrumb">
                             <ul>
                                 <li><a href="{{ url('') }}">Beranda</a></li>
-                                <li><a href="{{ url('/laboratorium') }}">Laboratorium</a></li>
+                                <li><a href="{{ url('/penunjang') }}">Penunjang</a></li>
                             </ul>
                         </div>
                     </div>
@@ -42,8 +42,8 @@
                             <!-- BLOG DETAIL THUMBNAIL START-->
                             <div class="blog_detail_thumbnail">
                                 <figure>
-                                    <img src="{{ url($laboratorium->thumbnail) }}" alt="" />
-                                    <figcaption><a href="#">Laboratorium</a></figcaption>
+                                    <img src="{{ url($penunjang->thumbnail) }}" alt="" />
+                                    <figcaption><a href="#">Penunjang</a></figcaption>
                                 </figure>
                             </div>
                             <!-- BLOG DETAIL THUMBNAIL END-->
@@ -51,17 +51,17 @@
                             <!--KF_BLOG DETAIL_DES START-->
                             <div class="kf_blog_detail_des">
                                 <div class="blog-detl_heading">
-                                    <h5>{{ $laboratorium->nama }}</h5>
+                                    <h5>{{ $penunjang->nama }}</h5>
                                 </div>
                                 <ul class="blog_detail_meta">
                                     <li><i class="fa fa-calendar"></i><a
-                                            href="#">{{ date('d M, Y', strtotime($laboratorium->release_date)) }}</a>
+                                            href="#">{{ date('d M, Y', strtotime($penunjang->release_date)) }}</a>
                                     </li>
                                 </ul>
                                 <div class="ck-style-image">
-                                <div class="ck-content">
-                                    {!! $laboratorium->teks !!}
-                                </div>
+                                    <div class="ck-content">
+                                        {!! $penunjang->teks !!}
+                                    </div>
                                 </div>
                             </div>
 

@@ -8,7 +8,7 @@ use App\Models\ProfilSingkat;
 use App\Models\AplikasiIntegrasi;
 use App\Models\InformasiTerbaru;
 use App\Models\Jurnal;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -252,10 +252,10 @@ class JurnalController extends Controller
             ->first();
         $kontak = Kontak::all()
             ->first();
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
-        return view('portal.jurnal.index',  compact('jurnals', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.jurnal.index',  compact('jurnals', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
     public function menuDetailJurnal($slug)
@@ -274,10 +274,10 @@ class JurnalController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.jurnal.index',  compact('jurnals', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.jurnal.index',  compact('jurnals', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

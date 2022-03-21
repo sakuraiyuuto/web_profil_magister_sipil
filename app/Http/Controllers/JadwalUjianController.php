@@ -9,7 +9,7 @@ use App\Models\AplikasiIntegrasi;
 use App\Models\HimpunanMahasiswa;
 use App\Models\InformasiTerbaru;
 use App\Models\JadwalUjian;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -235,11 +235,11 @@ class JadwalUjianController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.jadwal_ujian.index',  compact('jadwalUjians', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.jadwal_ujian.index',  compact('jadwalUjians', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
     public function menuDetailJadwalUjian($slug)
@@ -258,10 +258,10 @@ class JadwalUjianController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.jadwal_ujian.detail',  compact('jadwalUjian', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.jadwal_ujian.detail',  compact('jadwalUjian', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

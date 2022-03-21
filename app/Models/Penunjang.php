@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ProfilLulusan extends Model
+class Penunjang extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['teks'];
+    protected $table = 'penunjangs';
+
+    protected $fillable = [
+        'nama',
+        'thumbnail',
+        'teks',
+        'release_date',
+        'slug'
+    ];
 }

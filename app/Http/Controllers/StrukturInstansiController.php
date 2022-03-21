@@ -6,7 +6,7 @@ use App\Models\AplikasiIntegrasi;
 use App\Models\Kontak;
 use App\Models\HimpunanMahasiswa;
 use App\Models\InformasiTerbaru;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\ProfilSingkat;
 use App\Models\StrukturInstansi;
 use Illuminate\Http\Request;
@@ -64,10 +64,10 @@ class StrukturInstansiController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.struktur_organisasi.index',  compact('strukturInstansi', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.struktur_organisasi.index',  compact('strukturInstansi', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

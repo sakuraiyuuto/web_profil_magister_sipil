@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AplikasiIntegrasi;
 use App\Models\InformasiTerbaru;
 use App\Models\Kontak;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\ProfilSingkat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -69,9 +69,9 @@ class PencarianController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
-        return view('portal.pencarian.index',  compact('hasilPencarianPaginates', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.pencarian.index',  compact('hasilPencarianPaginates', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

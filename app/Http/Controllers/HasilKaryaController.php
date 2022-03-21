@@ -9,7 +9,7 @@ use App\Models\InformasiTerbaru;
 
 use App\Models\ProfilSingkat;
 use App\Models\HimpunanMahasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -202,11 +202,11 @@ class HasilKaryaController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.hasil_karya.index',  compact('hasilKaryas', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.hasil_karya.index',  compact('hasilKaryas', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
     public function menuHasilKaryaDetail($slug)
@@ -229,10 +229,10 @@ class HasilKaryaController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
-        
-        return view('portal.hasil_karya.show', compact('hasilKarya', 'kontak', 'hasilKaryas', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'laboratoriumHeaders'));
+
+        return view('portal.hasil_karya.show', compact('hasilKarya', 'kontak', 'hasilKaryas', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'penunjangHeaders'));
     }
 }

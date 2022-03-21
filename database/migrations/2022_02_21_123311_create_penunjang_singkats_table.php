@@ -1,11 +1,11 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
-class CreateLaboratoriumsTable extends Migration
+class CreatePenunjangSingkatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,16 +14,20 @@ class CreateLaboratoriumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('laboratoriums', function (Blueprint $table) {
+        Schema::create('penunjang_singkats', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 255)->nullable(false);
-            $table->text('thumbnail')->nullable(false);
             $table->text('teks')->nullable(false);
-            $table->text('slug')->nullable(false);
-            $table->date('release_date')->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('penunjang_singkats')->insert(
+            array(
+                [
+                    'teks' => "Teks Penunjang Singkat Teks Teks Teks Teks Teks TeksTeks Teks Teks Teksv Teks Teks",
+                ]
+            )
+        );
     }
 
     /**
@@ -33,6 +37,6 @@ class CreateLaboratoriumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laboratoriums');
+        Schema::dropIfExists('penunjang_singkats');
     }
 }

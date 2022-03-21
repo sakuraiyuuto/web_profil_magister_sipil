@@ -8,7 +8,7 @@ use App\Models\ProfilSingkat;
 use App\Models\AplikasiIntegrasi;
 use App\Models\InformasiTerbaru;
 use App\Models\HimpunanMahasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -125,10 +125,10 @@ class HimpunanMahasiswaController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.himpunan_mahasiswa.detail',  compact('himpunanMahasiswa', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.himpunan_mahasiswa.detail',  compact('himpunanMahasiswa', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

@@ -9,7 +9,7 @@ use App\Models\AplikasiIntegrasi;
 use App\Models\InformasiTerbaru;
 use App\Models\HimpunanMahasiswa;
 use App\Models\InformasiBeasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -240,11 +240,11 @@ class InformasiBeasiswaController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.informasi_beasiswa.index',  compact('informasiBeasiswas', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.informasi_beasiswa.index',  compact('informasiBeasiswas', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
     public function menuDetailInformasiBeasiswa($slug)
@@ -266,10 +266,10 @@ class InformasiBeasiswaController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.informasi_beasiswa.detail',  compact('informasiBeasiswa', 'informasiBeasiswas', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.informasi_beasiswa.detail',  compact('informasiBeasiswa', 'informasiBeasiswas', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

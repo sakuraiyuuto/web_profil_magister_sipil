@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Laboratorium')
+@section('title', 'Pengabdian Kepada Masyarakat')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,25 +9,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Laboratorium</h1>
+                        <h1 class="m-0">Pengabdian Kepada Masyarakat</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-        <!-- /.content-header -->
-
-        <!-- Alert Status -->
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        @if (session('alert'))
-            <div class="alert alert-danger">
-                {{ session('alert') }}
-            </div>
-        @endif
 
         <!-- Main content -->
         <section class="content">
@@ -36,46 +22,49 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Data Laboratorium</h3>
+                                <h3 class="card-title">Tambah Data Pengabdian Kepada Masyarakat</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <!-- form start -->
                                     <form class="from-prevent-multiple-submits"
-                                        action="{{ route('laboratorium.update', $laboratorium) }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @method('patch')
+                                        action="{{ route('pengabdian_kepada_masyarakat.store') }}" method="POST"
+                                        id="ckeditorForm" enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-body">
-                                            <input type="hidden" value="{{ $laboratorium->id }}" name="id">
                                             <div class="form-group">
-                                                <label for="nama">Nama Laboratorium</label>
-                                                <input type="text" class="form-control" id="nama" name="nama"
-                                                    maxlength="255" placeholder="Masukkan Nama Laboratorium"
-                                                    value="{{ $laboratorium->nama }}">
+                                                <label for="judul">Judul</label>
+                                                <input type="text" class="form-control" id="judul" name="judul"
+                                                    placeholder="Masukkan Judul" value="" required maxlength="255">
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama_foto">Thumbnail (Maksimal 2MB)</label>
+                                                <label for="author">Pelaku PKM</label>
+                                                <input type="text" class="form-control" id="author" name="author"
+                                                    placeholder="Masukkan Pelaku PKM" value="" required maxlength="255">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tahun">Tahun</label>
+                                                <input type="number" class="form-control" id="tahun" name="tahun"
+                                                    placeholder="Masukkan Tahun Kegiatan" value="" required maxlength="4">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="thumbnail">Thumbnail (Maksimal 2MB)</label>
                                                 <div class="form-group">
-                                                    <img src="{{ url($laboratorium->thumbnail) }}" alt="Image Missing"
-                                                        id="old_nama_foto" style="max-width: 200px;"
+                                                    <img id="img_preview_add" style="max-width: 200px;"
                                                         class="mt-2" />
                                                 </div>
                                                 <input type="file" accept="image/*" class="form-control mt-0"
-                                                    name="thumbnail" id="input_foto_edit">
-                                                <input type="hidden" name="old_thumbnail"
-                                                    value="{{ $laboratorium->thumbnail }}">
+                                                    name="thumbnail" id="input_foto_add" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="teks">Teks (Foto Maksimal 2MB)</label>
-                                                <textarea id="teks" placeholder="Masukkan Deskripsi Laboratorium"
-                                                    name="teks">{{ $laboratorium->teks }}</textarea>
+                                                <label for="teks">Teks</label>
+                                                <textarea id="teks" placeholder="Masukkan Teks Pengabdian Kepada Masyarakat" name="teks" class="ck_editor_txt"
+                                                    id="ck_editor_txt"></textarea>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group mt-2">
                                                 <label for="release_date">Tanggal Rilis</label>
-                                                <input type="date" class="form-control" name="release_date"
-                                                    value="{{ $laboratorium->release_date }}" required>
+                                                <input type="date" class="form-control mt-0" name="release_date" required>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -195,6 +184,8 @@
             };
         }
 
+        var allEditors = document.querySelector('.ck_editor_txt');
+
         //Initialize the ckeditor
         ClassicEditor.create(document.querySelector("#teks"), {
             extraPlugins: [SimpleUploadAdapterPlugin],
@@ -202,8 +193,16 @@
             console.error(error);
         });
 
-        //Form edit image validation
-        var uploadField = document.getElementById("input_foto_edit");
+        $("#ckeditorForm").submit(function(e) {
+            var content = $('.ck_editor_txt').val();
+            html = $(content).text();
+            if ($.trim(html) == '') {
+                alert("Teks Tidak Boleh Kosong!");
+                e.preventDefault();
+            }
+        });
+
+        var uploadField = document.getElementById("input_foto_add");
         uploadField.onchange = function() {
             if (this.files[0].size > 2000000) {
                 alert("Batas maksimum 2MB!");
@@ -212,7 +211,7 @@
                 //Ubah Img Preview
                 var reader = new FileReader();
                 reader.onload = function() {
-                    var output = document.getElementById('old_nama_foto');
+                    var output = document.getElementById('img_preview_add');
                     output.src = reader.result;
                 }
                 reader.readAsDataURL(event.target.files[0]);
@@ -222,6 +221,20 @@
 
     <!-- Validasi Tombol -->
     <script type="text/javascript">
+        var $formAdd = $("#formAdd");
+        $formAdd.submit(function() {
+            $formAdd.submit(function() {
+                return false;
+            });
+        });
+
+        var $formEdit = $("#formEdit");
+        $formEdit.submit(function() {
+            $formEdit.submit(function() {
+                return false;
+            });
+        });
+
         (function() {
             $('.from-prevent-multiple-submits').on('submit', function() {
                 $('.from-prevent-multiple-submits').attr('disabled', 'true');

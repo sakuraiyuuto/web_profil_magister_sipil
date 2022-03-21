@@ -36,21 +36,47 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Menu Penunjang</h3>
+                                <h3 class="card-title">Tambah Data Penunjang</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
-                                    <form class="from-prevent-multiple-submits"
-                                        action="{{ route('ruang_lab.update', $ruangLab->id) }}" method="POST">
-                                        @method('patch')
+                                    <!-- form start -->
+                                    <form class="from-prevent-multiple-submits" action="{{ route('penunjang.store') }}"
+                                        method="POST" id="ckeditorForm" enctype="multipart/form-data">
                                         @csrf
-                                        <textarea id="teks" placeholder="Enter the Description" name="teks">{{ $ruangLab->teks }}</textarea>
-                                        <br>
-                                        <button type="submit" class="btn btn-success"> Save </button>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="nama">Nama Penunjang</label>
+                                                <input type="text" class="form-control" id="nama" name="nama"
+                                                    maxlength="255" placeholder="Masukkan Nama Penunjang" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama_foto">Thumbnail (Maksimal 2MB)</label>
+                                                <div class="form-group">
+                                                    <img id="img_preview_add" style="max-width: 200px;"
+                                                        class="mt-2">
+                                                </div>
+                                                <input type="file" accept="image/*" class="form-control mt-0"
+                                                    name="thumbnail" id="input_foto_add" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="teks">Teks (Foto Maksimal 2MB)</label>
+                                                <textarea id="teks" placeholder="Masukkan Teks" name="teks" class="ck_editor_txt" id="ck_editor_txt"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="release_date">Tanggal Rilis</label>
+                                                <input type="date" class="form-control" name="release_date" value=""
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -59,9 +85,6 @@
         </section>
     </div>
 
-@endsection
-
-@section('script')
     <script>
         //Define an adapter to upload the files
         class MyUploadAdapter {
@@ -164,12 +187,40 @@
             };
         }
 
+        var allEditors = document.querySelector('.ck_editor_txt');
+
         //Initialize the ckeditor
         ClassicEditor.create(document.querySelector("#teks"), {
             extraPlugins: [SimpleUploadAdapterPlugin],
         }).catch((error) => {
             console.error(error);
         });
+
+        $("#ckeditorForm").submit(function(e) {
+            var content = $('.ck_editor_txt').val();
+            html = $(content).text();
+            if ($.trim(html) == '') {
+                alert("Teks Tidak Boleh Kosong!");
+                e.preventDefault();
+            }
+        });
+
+        //Form add image validation
+        var uploadField = document.getElementById("input_foto_add");
+        uploadField.onchange = function() {
+            if (this.files[0].size > 2000000) {
+                alert("Batas maksimum 2MB!");
+                this.value = "";
+            } else {
+                //Ubah Img Preview
+                var reader = new FileReader();
+                reader.onload = function() {
+                    var output = document.getElementById('img_preview_add');
+                    output.src = reader.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            };
+        };
     </script>
 
     <!-- Validasi Tombol -->

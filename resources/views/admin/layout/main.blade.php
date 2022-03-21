@@ -177,9 +177,9 @@
                         </li>
 
                         <li
-                            class="nav-item {{ set_open(['banner.index','quote.index','profil_singkat.index','galeri.index','kemitraan.index','laboratorium_singkat.index']) }}">
+                            class="nav-item {{ set_open(['banner.index','quote.index','profil_singkat.index','galeri.index','kemitraan.index','penunjang_singkat.index']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['banner.index','quote.index','profil_singkat.index','galeri.index','kemitraan.index','laboratorium_singkat.index']) }}">
+                                class="nav-link {{ set_active(['banner.index','quote.index','profil_singkat.index','galeri.index','kemitraan.index','penunjang_singkat.index']) }}">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     Beranda
@@ -221,11 +221,11 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/laboratorium_singkat') }}"
-                                        class="nav-link {{ set_active(['laboratorium_singkat.index']) }}">
+                                    <a href="{{ url('admin/penunjang_singkat') }}"
+                                        class="nav-link {{ set_active(['penunjang_singkat.index']) }}">
                                         <i
-                                            class="far fa{{ set_dot(['laboratorium_singkat.index']) }}-circle nav-icon"></i>
-                                        <p>Laboratorium Singkat</p>
+                                            class="far fa{{ set_dot(['penunjang_singkat.index']) }}-circle nav-icon"></i>
+                                        <p>Penunjang Singkat</p>
                                     </a>
                                 </li>
 
@@ -314,9 +314,9 @@
                         </li>
 
                         <li
-                            class="nav-item {{ set_open(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','kegiatan_kkl.index','kegiatan_kkl.edit','dokumen_prodi.index','kegiatan_kkl.create','jurnal.index']) }}">
+                            class="nav-item {{ set_open(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','kegiatan_kkl.index','kegiatan_kkl.edit','dokumen_prodi.index','kegiatan_kkl.create','jurnal.index','pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.create','pengabdian_kepada_masyarakat.edit']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','kegiatan_kkl.index','kegiatan_kkl.edit','dokumen_prodi.index','kegiatan_kkl.create','jurnal.index']) }}">
+                                class="nav-link {{ set_active(['seminar_proposal.index','tesis.index','kuliah_kerja_lapangan.index','kurikulum.index','hasil_karya.index','hasil_karya.edit','hasil_karya.create','kalender_akademik.index','penelitian.index','penelitian.edit','penelitian.create','kegiatan_kkl.index','kegiatan_kkl.edit','dokumen_prodi.index','kegiatan_kkl.create','jurnal.index','pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.create','pengabdian_kepada_masyarakat.edit']) }}">
 
                                 <i class="nav-icon fas fa-school"></i>
                                 <p>
@@ -361,6 +361,15 @@
                                 </li>
 
                                 <li class="nav-item">
+                                    <a href="{{ url('admin/pengabdian_kepada_masyarakat') }}"
+                                        class="nav-link {{ set_active(['pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','pengabdian_kepada_masyarakat.create']) }}">
+                                        <i
+                                            class="far fa{{ set_dot(['pengabdian_kepada_masyarakat.index','pengabdian_kepada_masyarakat.edit','pengabdian_kepada_masyarakat.create']) }}-circle nav-icon"></i>
+                                        <p>Pengabdian Kepada Masyarakat</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
                                     <a href="{{ url('admin/kegiatan_kkl') }}"
                                         class="nav-link {{ set_active(['kegiatan_kkl.index', 'kegiatan_kkl.edit', 'kegiatan_kkl.create']) }}">
                                         <i
@@ -368,6 +377,7 @@
                                         <p>Kuliah Kerja Lapangan</p>
                                     </a>
                                 </li>
+
                                 <li class="nav-item">
                                     <a href="{{ url('admin/dokumen_prodi') }}"
                                         class="nav-link {{ set_active(['dokumen_prodi.index']) }}">
@@ -505,9 +515,9 @@
                         </li>
 
                         <li
-                            class="nav-item {{ set_open(['ruang_perkuliahan.index','laboratorium.index','laboratorium.edit','laboratorium.create','ruang_prodi_akademik.index','perpustakaan.index']) }}">
+                            class="nav-item {{ set_open(['ruang_perkuliahan.index','penunjang.index','penunjang.edit','penunjang.create','ruang_prodi_akademik.index','perpustakaan.index']) }}">
                             <a href="#"
-                                class="nav-link {{ set_active(['ruang_perkuliahan.index','laboratorium.index','laboratorium.edit','laboratorium.create','ruang_prodi_akademik.index','perpustakaan.index']) }}">
+                                class="nav-link {{ set_active(['ruang_perkuliahan.index','penunjang.index','penunjang.edit','penunjang.create','ruang_prodi_akademik.index','perpustakaan.index']) }}">
                                 <i class="nav-icon fas fa-building"></i>
                                 <p>
                                     Fasilitas
@@ -526,11 +536,11 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/laboratorium') }}"
-                                        class="nav-link {{ set_active(['laboratorium.index', 'laboratorium.edit', 'laboratorium.create']) }}">
+                                    <a href="{{ url('admin/penunjang') }}"
+                                        class="nav-link {{ set_active(['penunjang.index', 'penunjang.edit', 'penunjang.create']) }}">
                                         <i
-                                            class="far fa{{ set_dot(['laboratorium.index', 'laboratorium.edit', 'laboratorium.create']) }}-circle nav-icon"></i>
-                                        <p>Laboratorium</p>
+                                            class="far fa{{ set_dot(['penunjang.index', 'penunjang.edit', 'penunjang.create']) }}-circle nav-icon"></i>
+                                        <p>Penunjang</p>
                                     </a>
                                 </li>
 

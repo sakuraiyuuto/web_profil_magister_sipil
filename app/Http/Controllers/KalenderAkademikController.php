@@ -9,7 +9,7 @@ use App\Models\InformasiTerbaru;
 
 use App\Models\ProfilSingkat;
 use App\Models\HimpunanMahasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -166,12 +166,12 @@ class KalenderAkademikController extends Controller
             ->first();
         $kontak = Kontak::all()
             ->first();
-        
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kalender_akademik.index',  compact('kalenderAkademiks', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.kalender_akademik.index',  compact('kalenderAkademiks', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
     public function menuKalenderAkademikDetail($slug)
@@ -191,10 +191,10 @@ class KalenderAkademikController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kalender_akademik.show', compact('kalenderAkademik', 'kontak', 'informasiTerbarus', 'aplikasiIntegrasis',  'profilSingkat', 'laboratoriumHeaders'));
+        return view('portal.kalender_akademik.show', compact('kalenderAkademik', 'kontak', 'informasiTerbarus', 'aplikasiIntegrasis',  'profilSingkat', 'penunjangHeaders'));
     }
 }

@@ -8,7 +8,7 @@ use App\Models\ProfilSingkat;
 use App\Models\AplikasiIntegrasi;
 use App\Models\HimpunanMahasiswa;
 use App\Models\InformasiTerbaru;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\Penelitian;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -275,10 +275,10 @@ class PenelitianController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.penelitian.detail',  compact('penelitian', 'penelitians', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.penelitian.detail',  compact('penelitian', 'penelitians', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

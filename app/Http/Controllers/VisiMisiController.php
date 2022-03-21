@@ -6,7 +6,7 @@ use App\Models\AplikasiIntegrasi;
 use App\Models\Kontak;
 use App\Models\InformasiTerbaru;
 use App\Models\HimpunanMahasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\ProfilSingkat;
 use App\Models\VisiMisi;
 use Illuminate\Http\Request;
@@ -65,10 +65,10 @@ class VisiMisiController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.visi_misi.index',  compact('visiMisi', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.visi_misi.index',  compact('visiMisi', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

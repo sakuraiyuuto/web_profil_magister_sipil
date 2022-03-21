@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Laboratorium')
+@section('title', 'Penunjang')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Laboratorium</h1>
+                        <h1 class="m-0">Penunjang</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -36,40 +36,45 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Tambah Data Laboratorium</h3>
+                                <h3 class="card-title">Edit Data Penunjang</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <!-- form start -->
-                                    <form class="from-prevent-multiple-submits" action="{{ route('laboratorium.store') }}"
-                                        method="POST" id="ckeditorForm" enctype="multipart/form-data">
+                                    <form class="from-prevent-multiple-submits"
+                                        action="{{ route('penunjang.update', $penunjang) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @method('patch')
                                         @csrf
                                         <div class="card-body">
+                                            <input type="hidden" value="{{ $penunjang->id }}" name="id">
                                             <div class="form-group">
-                                                <label for="nama">Nama Laboratorium</label>
+                                                <label for="nama">Nama Penunjang</label>
                                                 <input type="text" class="form-control" id="nama" name="nama"
-                                                    maxlength="255" placeholder="Masukkan Nama Laboratorium" value=""
-                                                    required>
+                                                    maxlength="255" placeholder="Masukkan Nama Penunjang"
+                                                    value="{{ $penunjang->nama }}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="nama_foto">Thumbnail (Maksimal 2MB)</label>
                                                 <div class="form-group">
-                                                    <img id="img_preview_add" style="max-width: 200px;"
-                                                        class="mt-2">
+                                                    <img src="{{ url($penunjang->thumbnail) }}" alt="Image Missing"
+                                                        id="old_nama_foto" style="max-width: 200px;"
+                                                        class="mt-2" />
                                                 </div>
                                                 <input type="file" accept="image/*" class="form-control mt-0"
-                                                    name="thumbnail" id="input_foto_add" required>
+                                                    name="thumbnail" id="input_foto_edit">
+                                                <input type="hidden" name="old_thumbnail"
+                                                    value="{{ $penunjang->thumbnail }}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="teks">Teks (Foto Maksimal 2MB)</label>
-                                                <textarea id="teks" placeholder="Masukkan Teks" name="teks"
-                                                    class="ck_editor_txt" id="ck_editor_txt"></textarea>
+                                                <textarea id="teks" placeholder="Masukkan Deskripsi Penunjang" name="teks">{{ $penunjang->teks }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="release_date">Tanggal Rilis</label>
-                                                <input type="date" class="form-control" name="release_date" value=""
-                                                    required>
+                                                <input type="date" class="form-control" name="release_date"
+                                                    value="{{ $penunjang->release_date }}" required>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -189,8 +194,6 @@
             };
         }
 
-        var allEditors = document.querySelector('.ck_editor_txt');
-
         //Initialize the ckeditor
         ClassicEditor.create(document.querySelector("#teks"), {
             extraPlugins: [SimpleUploadAdapterPlugin],
@@ -198,17 +201,8 @@
             console.error(error);
         });
 
-        $("#ckeditorForm").submit(function(e) {
-            var content = $('.ck_editor_txt').val();
-            html = $(content).text();
-            if ($.trim(html) == '') {
-                alert("Teks Tidak Boleh Kosong!");
-                e.preventDefault();
-            }
-        });
-
-        //Form add image validation
-        var uploadField = document.getElementById("input_foto_add");
+        //Form edit image validation
+        var uploadField = document.getElementById("input_foto_edit");
         uploadField.onchange = function() {
             if (this.files[0].size > 2000000) {
                 alert("Batas maksimum 2MB!");
@@ -217,7 +211,7 @@
                 //Ubah Img Preview
                 var reader = new FileReader();
                 reader.onload = function() {
-                    var output = document.getElementById('img_preview_add');
+                    var output = document.getElementById('old_nama_foto');
                     output.src = reader.result;
                 }
                 reader.readAsDataURL(event.target.files[0]);

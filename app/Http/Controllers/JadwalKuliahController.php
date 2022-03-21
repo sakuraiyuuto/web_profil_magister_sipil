@@ -9,7 +9,7 @@ use App\Models\AplikasiIntegrasi;
 use App\Models\HimpunanMahasiswa;
 use App\Models\InformasiTerbaru;
 use App\Models\JadwalKuliah;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -229,11 +229,11 @@ class JadwalKuliahController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.jadwal_kuliah.index',  compact('jadwalKuliahs', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.jadwal_kuliah.index',  compact('jadwalKuliahs', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
     public function menuDetailJadwalKuliah($slug)
@@ -252,10 +252,10 @@ class JadwalKuliahController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.jadwal_kuliah.detail',  compact('jadwalKuliah', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.jadwal_kuliah.detail',  compact('jadwalKuliah', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

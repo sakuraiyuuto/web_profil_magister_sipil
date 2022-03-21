@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Profil Lulusan - Magister Teknik Sipil UNTAN')
+@section('title', 'Pengabdian Kepada Masyarakat - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -11,12 +11,14 @@
                     <!--KF INR BANNER DES Wrap Start-->
                     <div class="kf_inr_ban_des">
                         <div class="inr_banner_heading">
-                            <h3>Profil Lulusan</h3>
+                            <h3>Detail Pengabdian Kepada Masyarakat</h3>
                         </div>
+
                         <div class="kf_inr_breadcrumb">
                             <ul>
                                 <li><a href="{{ url('') }}">Beranda</a></li>
-                                <li><a>Profil Lulusan</a></li>
+                                <li><a href="{{ url('/pengabdian_kepada_masyarakat') }}">Pengabdian Kepada Masyarakat</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -26,28 +28,74 @@
         </div>
     </div>
 
+    <!--Banner Wrap End-->
+
     <!--Content Wrap Start-->
     <div class="kf_content_wrap">
-        <!--ABOUT UNIVERSITY START-->
         <section>
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <div class="abt_univ_wrap">
-                            <!-- HEADING 1 START-->
-                            <div class="kf_edu2_heading1">
-                                <h3>Profil Lulusan Magister Teknik Sipil</h3>
-                            </div>
-                            <!-- HEADING 1 END-->
 
-                            <div class="abt_univ_des">
-                                <div class="ck-style-image">
-                                    <div class="ck-content">
-                                        {!! $profilLulusan->teks !!}
-                                    </div>
-                                </div>
+                        <!--KF_BLOG DETAIL_WRAP START-->
+                        <div class="kf_blog_detail_wrap">
+
+                            <!-- BLOG DETAIL THUMBNAIL START-->
+                            <div class="blog_detail_thumbnail">
+                                <figure>
+                                    <img src="{{ url($pengabdianKepadaMasyarakat->thumbnail) }}" alt="" />
+                                    <figcaption><a href="#">Pengabdian Kepada Masyarakat</a></figcaption>
+                                </figure>
                             </div>
+                            <!-- BLOG DETAIL THUMBNAIL END-->
+
+                            <!--KF_BLOG DETAIL_DES START-->
+                            <div class="kf_blog_detail_des">
+                                <div class="blog-detl_heading">
+                                    <h5>{{ $pengabdianKepadaMasyarakat->judul }}</h5>
+                                </div>
+                                <ul class="blog_detail_meta">
+                                    <li><i class="fa fa-calendar"></i><a
+                                            href="#">{{ date('d M, Y', strtotime($pengabdianKepadaMasyarakat->release_date)) }}</a>
+                                    </li>
+                                </ul>
+                                <ul class="blog_detail_meta">
+                                    <li><a href="#">Pelaku KKL : {{ $pengabdianKepadaMasyarakat->author }}</a>
+                                    </li>
+                                </ul>
+                                <ul class="blog_detail_meta">
+                                    <li><a href="#">Tahun KKL : {{ $pengabdianKepadaMasyarakat->tahun }}</a>
+                                    </li>
+                                </ul>
+
+                                <p>{!! $pengabdianKepadaMasyarakat->teks !!}
+
+
+                            </div>
+
+                            <!--Share Media Sosial -->
+                            <section id="share-post">
+                                <div class="icons">
+                                    <span>Bagikan ke :</span>
+                                    <a href="{{ Share::currentPage()->facebook()->getRawLinks() }}" class="social-button"
+                                        target="_blank" id="">
+                                        <span class="fa fa-facebook-square"></span>
+                                    </a>
+
+                                    <a href="{{ Share::currentPage()->twitter()->getRawLinks() }}" class="social-button "
+                                        target="_blank" id="">
+                                        <span class="fa fa-twitter-square"></span>
+                                    </a>
+                                    <a href="{{ Share::currentPage()->whatsapp()->getRawLinks() }}" class="social-button "
+                                        target="_blank" id="">
+                                        <span class="fa fa-whatsapp"></span>
+                                    </a>
+                                </div><!-- /.icons -->
+                            </section>
+
+                            <!--KF_BLOG DETAIL_DES END-->
                         </div>
+                        <!--KF_BLOG DETAIL_WRAP END-->
                     </div>
 
                     <!--KF_EDU_SIDEBAR_WRAP START-->
@@ -105,10 +153,9 @@
                         </div>
                     </div>
                     <!--KF EDU SIDEBAR WRAP END-->
+
                 </div>
             </div>
         </section>
-        <!--ABOUT UNIVERSITY END-->
     </div>
-    <!--Content Wrap End-->
 @endsection

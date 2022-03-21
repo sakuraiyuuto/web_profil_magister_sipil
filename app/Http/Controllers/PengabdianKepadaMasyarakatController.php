@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kontak;
-
 use App\Models\ProfilSingkat;
-use App\Models\HimpunanMahasiswa;
 use App\Models\AplikasiIntegrasi;
 use App\Models\InformasiTerbaru;
+use App\Models\PengabdianKepadaMasyarakat;
+use App\Models\HimpunanMahasiswa;
+use App\Models\Kontak;
 use App\Models\Penunjang;
-use App\Models\LayananMahasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +16,8 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 
-class LayananMahasiswaController extends Controller
+
+class PengabdianKepadaMasyarakatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,9 +27,9 @@ class LayananMahasiswaController extends Controller
     public function index()
     {
         $session_user = Auth::user();
-        $layananMahasiswas = LayananMahasiswa::withTrashed()->get()
+        $pengabdianKepadaMasyarakats = PengabdianKepadaMasyarakat::withTrashed()->get()
             ->sortDesc();
-        return view('admin/layanan_mahasiswa.index', compact('layananMahasiswas', 'session_user'));
+        return view('admin/pengabdian_kepada_masyarakat.index', compact('pengabdianKepadaMasyarakats', 'session_user'));
     }
 
     /**
@@ -40,7 +40,7 @@ class LayananMahasiswaController extends Controller
     public function create()
     {
         $session_user = Auth::user();
-        return view('admin/layanan_mahasiswa.create', compact('session_user'));
+        return view('admin/pengabdian_kepada_masyarakat.create', compact('session_user'));
     }
 
     /**
@@ -53,15 +53,17 @@ class LayananMahasiswaController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
+            'author' => 'required',
+            'tahun' => 'required',
             'thumbnail' => 'required|mimes:jpg,jpeg,png,svg,gif',
             'teks' => 'required',
             'release_date' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return redirect('/admin/layanan_mahasiswa')->with('alert', 'Ada kesalahan data, coba lagi.');
+            return redirect('/admin/pengabdian_kepada_masyarakat')->with('alert', 'Ada kesalahan data, coba lagi.');
         } else {
-            $path_url = 'images/layanan_mahasiswa/';
+            $path_url = 'images/pengabdian_kepada_masyarakat/';
 
             $originName = $request->thumbnail->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -79,24 +81,26 @@ class LayananMahasiswaController extends Controller
 
             $slug = Str::slug($request->judul) . '_' . time();
 
-            LayananMahasiswa::create([
-                'thumbnail' => 'images/layanan_mahasiswa/' . $fileName,
+            PengabdianKepadaMasyarakat::create([
+                'thumbnail' => 'images/pengabdian_kepada_masyarakat/' . $fileName,
                 'judul' => $request->judul,
+                'author' => $request->author,
+                'tahun' => $request->tahun,
                 'teks' => $request->teks,
-                'slug' => 'layanan_mahasiswa/' . $slug,
+                'slug' => 'pengabdian_kepada_masyarakat/' . $slug,
                 'release_date' => $request->release_date,
             ]);
-            return redirect('/admin/layanan_mahasiswa')->with('status', 'Layanan Mahasiswa Berhasil Ditambahkan');
+            return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Ditambahkan');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\LayananMahasiswa  $layananMahasiswas
+     * @param  \App\Models\PengabdianKepadaMasyarakat  $pengabdianKepadaMasyarakats
      * @return \Illuminate\Http\Response
      */
-    public function show(LayananMahasiswa $layananMahasiswas)
+    public function show(PengabdianKepadaMasyarakat $pengabdianKepadaMasyarakats)
     {
         //
     }
@@ -104,22 +108,22 @@ class LayananMahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\LayananMahasiswa  $layananMahasiswas
+     * @param  \App\Models\PengabdianKepadaMasyarakat  $pengabdianKepadaMasyarakats
      * @return \Illuminate\Http\Response
      */
-    public function edit(LayananMahasiswa $layananMahasiswa)
+    public function edit($id)
     {
         $session_user = Auth::user();
-        $layananMahasiswa = LayananMahasiswa::all()->firstWhere('slug', $layananMahasiswa->slug);
+        $pengabdianKepadaMasyarakat = PengabdianKepadaMasyarakat::all()->firstWhere('id', $id);
 
-        return view('admin.layanan_mahasiswa.edit', compact('layananMahasiswa', 'session_user'));
+        return view('admin.pengabdian_kepada_masyarakat.edit', compact('pengabdianKepadaMasyarakat', 'session_user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LayananMahasiswa  $layananMahasiswas
+     * @param  \App\Models\PengabdianKepadaMasyarakat  $pengabdianKepadaMasyarakats
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -127,36 +131,40 @@ class LayananMahasiswaController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'required',
             'judul' => 'required',
+            'author' => 'required',
+            'tahun' => 'required',
             'thumbnail' => 'mimes:jpg,jpeg,png,svg,gif',
             'teks' => 'required',
             'release_date' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return redirect('/admin/layanan_mahasiswa')->with('alert', 'Ada kesalahan data, coba lagi.');
+            return redirect('/admin/pengabdian_kepada_masyarakat')->with('alert', 'Ada kesalahan data, coba lagi.');
         } else {
-            $layananMahasiswas = LayananMahasiswa::all()
+            $pengabdianKepadaMasyarakats = PengabdianKepadaMasyarakat::all()
                 ->where('id', $request->id)
                 ->first();
 
             if ($request->thumbnail == "") {
-                $fileName = $layananMahasiswas->thumbnail;
+                $fileName = $pengabdianKepadaMasyarakats->thumbnail;
 
-                LayananMahasiswa::where('id', $request->id)
+                PengabdianKepadaMasyarakat::where('id', $request->id)
                     ->update([
                         'thumbnail' => $fileName,
                         'judul' => $request->judul,
+                        'author' => $request->author,
+                        'tahun' => $request->tahun,
                         'teks' => $request->teks,
                         'release_date' => $request->release_date,
                     ]);
-                return redirect('/admin/layanan_mahasiswa')->with('status', 'Layanan Mahasiswa Berhasil Diubah');
+                return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Diubah');
             } else {
-                $file = $layananMahasiswas->thumbnail;
+                $file = $pengabdianKepadaMasyarakats->thumbnail;
                 if (file_exists($file)) {
                     @unlink($file);
                 }
 
-                $path_url = 'images/layanan_mahasiswa/';
+                $path_url = 'images/pengabdian_kepada_masyarakat/';
 
                 $originName = $request->thumbnail->getClientOriginalName();
                 $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -172,14 +180,16 @@ class LayananMahasiswaController extends Controller
 
                 $img->save($thumbnailpath);
 
-                LayananMahasiswa::where('id', $request->id)
+                PengabdianKepadaMasyarakat::where('id', $request->id)
                     ->update([
-                        'thumbnail' => 'images/layanan_mahasiswa/' . $fileName,
+                        'thumbnail' => 'images/pengabdian_kepada_masyarakat/' . $fileName,
                         'judul' => $request->judul,
+                        'author' => $request->author,
+                        'tahun' => $request->tahun,
                         'teks' => $request->teks,
                         'release_date' => $request->release_date,
                     ]);
-                return redirect('/admin/layanan_mahasiswa')->with('status', 'Layanan Mahasiswa Berhasil Diubah');
+                return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Diubah');
             }
         }
     }
@@ -187,46 +197,46 @@ class LayananMahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\LayananMahasiswa  $layananMahasiswas
+     * @param  \App\Models\PengabdianKepadaMasyarakat  $pengabdianKepadaMasyarakats
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        LayananMahasiswa::destroy($id);
-        return redirect('/admin/layanan_mahasiswa')->with('status', 'Layanan Mahasiswa Berhasil Dihapus');
+        PengabdianKepadaMasyarakat::destroy($id);
+        return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Dihapus');
     }
 
     public function restore($id)
     {
-        $layananMahasiswa = LayananMahasiswa::withTrashed()
+        $pengabdianKepadaMasyarakat = PengabdianKepadaMasyarakat::withTrashed()
             ->where('id', $id)
             ->first();
 
-        $layananMahasiswa->restore();
-        return redirect('/admin/layanan_mahasiswa')->with('status', 'Layanan Mahasiswa Berhasil Direstore');
+        $pengabdianKepadaMasyarakat->restore();
+        return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Direstore');
     }
 
     public function delete($id)
     {
-        $layananMahasiswa = LayananMahasiswa::withTrashed()
+        $pengabdianKepadaMasyarakat = PengabdianKepadaMasyarakat::withTrashed()
             ->where('id', $id)
             ->first();
 
-        $file = $layananMahasiswa->thumbnail;
+        $file = $pengabdianKepadaMasyarakat->thumbnail;
 
         if (file_exists($file)) {
             @unlink($file);
         }
 
-        $layananMahasiswa->forceDelete();
-        return redirect('/admin/layanan_mahasiswa')->with('status', 'Layanan Mahasiswa Berhasil Dihapus Permanen');
+        $pengabdianKepadaMasyarakat->forceDelete();
+        return redirect('/admin/pengabdian_kepada_masyarakat')->with('status', 'Pengabdian Kepada Masyarakat Berhasil Dihapus Permanen');
     }
 
-    public function menuLayananMahasiswa()
+    public function menuPengabdianKepadaMasyarakat()
     {
-        $layananMahasiswas = LayananMahasiswa::where('release_date', '<=', date('Y-m-d'))
-            ->orderBy('release_date', 'DESC')
-            ->paginate(6);
+        $pengabdianKepadaMasyarakats = PengabdianKepadaMasyarakat::where('release_date', '<=', date('Y-m-d'))
+            ->orderBy('tahun', 'DESC')
+            ->get();
 
         $informasiTerbarus = InformasiTerbaru::informasiTerbaru()
             ->take(3)
@@ -244,19 +254,19 @@ class LayananMahasiswaController extends Controller
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.layanan_mahasiswa.index',  compact('layananMahasiswas', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
+        return view('portal.pengabdian_kepada_masyarakat.index',  compact('pengabdianKepadaMasyarakats', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
-    public function menuDetailLayananMahasiswa($slug)
+    public function menuDetailPengabdianKepadaMasyarakat($slug)
     {
         $kontak = Kontak::all()->first();
 
         $profilSingkat = ProfilSingkat::all()->first();
-        $layananMahasiswa = LayananMahasiswa::where('slug', 'layanan_mahasiswa/' . $slug)
+        $pengabdianKepadaMasyarakat = PengabdianKepadaMasyarakat::where('slug', 'pengabdian_kepada_masyarakat/' . $slug)
             ->firstOrFail();
 
-        $layananMahasiswas = LayananMahasiswa::where('release_date', '<=', date('Y-m-d'))
-            ->where('slug', '!=', 'layanan_mahasiswa/' . $slug)
+        $pengabdianKepadaMasyarakats = PengabdianKepadaMasyarakat::where('release_date', '<=', date('Y-m-d'))
+            ->where('slug', '!=', 'pengabdian_kepada_masyarakat/' . $slug)
             ->take(2)
             ->orderBy('release_date', 'DESC');
         $informasiTerbarus = InformasiTerbaru::informasiTerbaru()
@@ -271,6 +281,6 @@ class LayananMahasiswaController extends Controller
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.layanan_mahasiswa.detail',  compact('layananMahasiswa', 'layananMahasiswas', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
+        return view('portal.pengabdian_kepada_masyarakat.detail',  compact('pengabdianKepadaMasyarakat', 'pengabdianKepadaMasyarakats', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

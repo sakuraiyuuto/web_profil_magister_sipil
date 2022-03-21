@@ -7,7 +7,7 @@ use App\Models\HimpunanMahasiswa;
 use App\Models\AplikasiIntegrasi;
 use App\Models\Kontak;
 use App\Models\InformasiTerbaru;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\ProfilSingkat;
 use App\Models\AkreditasiText;
 use Illuminate\Http\Request;
@@ -160,13 +160,13 @@ class AkreditasiController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
         $akreditasiText = AkreditasiText::all()->first();
 
-        return view('portal.akreditasi.index',  compact('akreditasis', 'akreditasiText', 'himpunanMahasiswaHeaders', 'kontak', 'informasiTerbarus', 'aplikasiIntegrasis', 'linkProdis', 'profilSingkat', 'laboratoriumHeaders'));
+        return view('portal.akreditasi.index',  compact('akreditasis', 'akreditasiText', 'himpunanMahasiswaHeaders', 'kontak', 'informasiTerbarus', 'aplikasiIntegrasis', 'linkProdis', 'profilSingkat', 'penunjangHeaders'));
     }
 
     public function updateAkreditasiText(Request $request, AkreditasiText $akreditasiText)
@@ -199,10 +199,10 @@ class AkreditasiController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.akreditasi.detail',  compact('akreditasi', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.akreditasi.detail',  compact('akreditasi', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

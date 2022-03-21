@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Laboratorium Singkat')
+@section('title', 'Penunjang Singkat')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Laboratorium Singkat</h1>
+                        <h1 class="m-0">Penunjang Singkat</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -36,20 +36,20 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Menu Laboratorium Singkat</h3>
+                                <h3 class="card-title">Edit Menu Penunjang Singkat</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <form class="from-prevent-multiple-submits"
-                                        action="{{ route('laboratorium_singkat.update', $laboratoriumSingkat->id) }}" method="POST"
-                                        enctype="multipart/form-data">
+                                        action="{{ route('penunjang_singkat.update', $penunjangSingkat->id) }}"
+                                        method="POST" enctype="multipart/form-data">
                                         @method('patch')
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $laboratoriumSingkat->id }}">
+                                        <input type="hidden" name="id" value="{{ $penunjangSingkat->id }}">
                                         <div class="form-group">
-                                            <textarea class="form-control" style="width : 40rem;height:20rem" type="text"
-                                                id="teks" name="teks">{{ $laboratoriumSingkat->teks }}</textarea>
+                                            <textarea class="form-control" style="width : 40rem;height:20rem" type="text" id="teks"
+                                                name="teks">{{ $penunjangSingkat->teks }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-success"> Save </button>
@@ -63,7 +63,7 @@
             </div>
         </section>
     </div>
-    
+
     <!-- Validasi Tombol -->
     <script type="text/javascript">
         (function() {

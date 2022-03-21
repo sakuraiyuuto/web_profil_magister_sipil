@@ -8,7 +8,7 @@ use App\Models\HimpunanMahasiswa;
 use App\Models\ProfilSingkat;
 use App\Models\InformasiTerbaru;
 use App\Models\AplikasiIntegrasi;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -242,10 +242,10 @@ class AplikasiIntegrasiController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.aplikasi_integrasi.index',  compact('aplikasiIntegrasiPaginates', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.aplikasi_integrasi.index',  compact('aplikasiIntegrasiPaginates', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

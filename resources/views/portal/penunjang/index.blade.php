@@ -1,6 +1,6 @@
 @extends('portal/layout/main')
 
-@section('title', 'Laboratorium - Magister Teknik Sipil UNTAN')
+@section('title', 'Penunjang - Magister Teknik Sipil UNTAN')
 
 @section('container')
     <!--Banner Wrap Start-->
@@ -11,12 +11,12 @@
                     <!--KF INR BANNER DES Wrap Start-->
                     <div class="kf_inr_ban_des">
                         <div class="inr_banner_heading">
-                            <h3>Laboratorium</h3>
+                            <h3>Penunjang</h3>
                         </div>
                         <div class="kf_inr_breadcrumb">
                             <ul>
                                 <li><a href="{{ url('') }}">Beranda</a></li>
-                                <li><a>Laboratorium</a></li>
+                                <li><a>Penunjang</a></li>
                             </ul>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        @foreach ($laboratoriumPaginates as $laboratoriumPaginate)
+                        @foreach ($penunjangPaginates as $penunjangPaginate)
                             <!--EVENT LIST Wrap Start-->
                             <div class="kf_event_list_wrap">
                                 <div class="row">
@@ -41,7 +41,7 @@
                                         <div class="kf_event_list_thumb">
                                             <figure>
                                                 <img style="height : 20rem; object-fit :cover"
-                                                    src="{{ url($laboratoriumPaginate->thumbnail) }}" alt="" />
+                                                    src="{{ url($penunjangPaginate->thumbnail) }}" alt="" />
                                             </figure>
                                         </div>
                                         <!--EVENT LIST THUMB END-->
@@ -51,21 +51,21 @@
                                         <!--EVENT LIST DES Start-->
                                         <div class="kf_event_list_des">
                                             <h4><a
-                                                    href="{{ url($laboratoriumPaginate->slug) }}"><span>{{ $laboratoriumPaginate->nama }}</span></a>
+                                                    href="{{ url($penunjangPaginate->slug) }}"><span>{{ $penunjangPaginate->nama }}</span></a>
                                             </h4>
                                             <p>
-                                                @if (strlen(strip_tags($laboratoriumPaginate->teks)) > 256)
-                                                    {{ str_replace('&nbsp;', '', substr(strip_tags($laboratoriumPaginate->teks), 0, 256) . '...') }}
+                                                @if (strlen(strip_tags($penunjangPaginate->teks)) > 256)
+                                                    {{ str_replace('&nbsp;', '', substr(strip_tags($penunjangPaginate->teks), 0, 256) . '...') }}
                                                 @else
-                                                    {{ str_replace('&nbsp;', '', substr(strip_tags($laboratoriumPaginate->teks), 0, 256)) }}
+                                                    {{ str_replace('&nbsp;', '', substr(strip_tags($penunjangPaginate->teks), 0, 256)) }}
                                                 @endif
                                             </p>
                                             <ul class="kf_event_list_links">
                                                 <li> <i class="fa fa-calendar"></i><a>
-                                                        {{ date('d M, Y', strtotime($laboratoriumPaginate->release_date)) }}</a>
+                                                        {{ date('d M, Y', strtotime($penunjangPaginate->release_date)) }}</a>
                                                 </li>
                                             </ul>
-                                            <a class="readmore" href="{{ url($laboratoriumPaginate->slug) }}">
+                                            <a class="readmore" href="{{ url($penunjangPaginate->slug) }}">
                                                 Selengkapnya
                                                 <i class="fa fa-long-arrow-right"></i>
                                             </a>
@@ -81,7 +81,7 @@
                             <ul class="pagination">
                                 <div class="center">
                                     <ul class="pagination">
-                                        {{ $laboratoriumPaginates->links('pagination::default') }}
+                                        {{ $penunjangPaginates->links('pagination::default') }}
                                     </ul>
                                 </div>
                             </ul>
@@ -137,42 +137,6 @@
 
                             </div>
                             <!--KF SIDEBAR RECENT POST WRAP END-->
-
-                            <!--KF SIDEBAR RECENT POST WRAP START-->
-                            <div class="widget widget-recent-posts">
-                                <h2>Laboratorium</h2>
-                                <ul id="normal" class="sidebar_rpost_des " style="width : 30rem">
-                                    <div id="owl-demo-apl" class="owl-carousel owl-theme">
-                                        @foreach ($aplikasiIntegrasis as $aplikasiIntegrasi)
-                                            <div class="item">
-                                                <!--LIST ITEM START-->
-                                                <li>
-                                                    <figure>
-                                                        <img style="height : 10rem;object-fit: cover"
-                                                            src="{{ url($aplikasiIntegrasi->thumbnail) }}" alt="">
-                                                        <figcaption><a href="{{ $aplikasiIntegrasi->url }}"><i
-                                                                    class="fa fa-search-plus"></i></a></figcaption>
-                                                    </figure>
-                                                    <div class="kode-text"
-                                                        style="padding-top : 10px;padding-right : 5px">
-                                                        <h6><a
-                                                                href="{{ $aplikasiIntegrasi->url }}">{{ $aplikasiIntegrasi->nama }}</a>
-                                                        </h6>
-                                                        <span><i class="fa fa-clock-o"></i>
-                                                            {{ date('d M, Y', strtotime($aplikasiIntegrasi->release_date)) }}</span>
-                                                    </div>
-                                                </li>
-                                                <!--LIST ITEM START-->
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </ul>
-
-                            </div>
-                            <a href="{{ url('aplikasi_integrasi') }}" style="font-size : 15px"
-                                class="button-pkm">Semua Aplikasi</a>
-                            <!--KF SIDEBAR RECENT POST WRAP END-->
-
                         </div>
                     </div>
                     <!--KF EDU SIDEBAR WRAP END-->

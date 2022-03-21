@@ -293,15 +293,15 @@
 
                             <!--COURSE CATEGORIES DES START-->
                             <div class="col-md-6">
-                                <a href="{{ url('laboratorium') }}" class="kf_cur_catg_des color-1 lab">
+                                <a href="{{ url('penunjang') }}" class="kf_cur_catg_des color-1 lab">
                                     <span><i class="icon-chemistry29"></i></span>
                                     <div class="kf_cur_catg_capstion">
-                                        <h5>Laboratorium</h5>
+                                        <h5>Penunjang</h5>
                                         <p>
-                                            @if (strlen(strip_tags($laboratoriumSingkat->teks)) > 256)
-                                                {{ str_replace('&nbsp;', '', substr(strip_tags($laboratoriumSingkat->teks), 0, 256) . '...') }}
+                                            @if (strlen(strip_tags($penunjangSingkat->teks)) > 256)
+                                                {{ str_replace('&nbsp;', '', substr(strip_tags($penunjangSingkat->teks), 0, 256) . '...') }}
                                             @else
-                                                {{ str_replace('&nbsp;', '', substr(strip_tags($laboratoriumSingkat->teks), 0, 256)) }}
+                                                {{ str_replace('&nbsp;', '', substr(strip_tags($penunjangSingkat->teks), 0, 256)) }}
                                             @endif
                                         </p>
                                     </div>

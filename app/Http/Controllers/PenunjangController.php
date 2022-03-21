@@ -7,14 +7,14 @@ use App\Models\LinkProdi;
 use App\Models\ProfilSingkat;
 use App\Models\AplikasiIntegrasi;
 use App\Models\InformasiTerbaru;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 
-class LaboratoriumController extends Controller
+class PenunjangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,9 +24,9 @@ class LaboratoriumController extends Controller
     public function index()
     {
         $session_user = Auth::user();
-        $laboratoriums = Laboratorium::withTrashed()->get()
+        $penunjangs = Penunjang::withTrashed()->get()
             ->sortDesc();
-        return view('admin/laboratorium.index', compact('laboratoriums', 'session_user'));
+        return view('admin/penunjang.index', compact('penunjangs', 'session_user'));
     }
 
     /**
@@ -37,7 +37,7 @@ class LaboratoriumController extends Controller
     public function create()
     {
         $session_user = Auth::user();
-        return view('admin/laboratorium.create', compact('session_user'));
+        return view('admin/penunjang.create', compact('session_user'));
     }
 
     /**
@@ -56,9 +56,9 @@ class LaboratoriumController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/admin/laboratorium')->with('alert', 'Ada kesalahan data, coba lagi.');
+            return redirect('/admin/penunjang')->with('alert', 'Ada kesalahan data, coba lagi.');
         } else {
-            $path_url = 'images/laboratorium/';
+            $path_url = 'images/penunjang/';
 
             $originName = $request->thumbnail->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -76,24 +76,24 @@ class LaboratoriumController extends Controller
 
             $slug = Str::slug($request->nama) . '_' . time();
 
-            Laboratorium::create([
-                'thumbnail' => 'images/laboratorium/' . $fileName,
+            Penunjang::create([
+                'thumbnail' => 'images/penunjang/' . $fileName,
                 'nama' => $request->nama,
                 'teks' => $request->teks,
-                'slug' => 'laboratorium/' . $slug,
+                'slug' => 'penunjang/' . $slug,
                 'release_date' => $request->release_date,
             ]);
-            return redirect('/admin/laboratorium')->with('status', 'Laboratorium Berhasil Ditambahkan');
+            return redirect('/admin/penunjang')->with('status', 'Penunjang Berhasil Ditambahkan');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Laboratorium  $laboratoriums
+     * @param  \App\Models\Penunjang  $penunjangs
      * @return \Illuminate\Http\Response
      */
-    public function show(Laboratorium $laboratoriums)
+    public function show(Penunjang $penunjangs)
     {
         //
     }
@@ -101,22 +101,22 @@ class LaboratoriumController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Laboratorium  $laboratoriums
+     * @param  \App\Models\Penunjang  $penunjangs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Laboratorium $laboratorium)
+    public function edit(Penunjang $penunjang)
     {
         $session_user = Auth::user();
-        $laboratorium = Laboratorium::all()->firstWhere('slug', $laboratorium->slug);
+        $penunjang = Penunjang::all()->firstWhere('slug', $penunjang->slug);
 
-        return view('admin.laboratorium.edit', compact('laboratorium', 'session_user'));
+        return view('admin.penunjang.edit', compact('penunjang', 'session_user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Laboratorium  $laboratoriums
+     * @param  \App\Models\Penunjang  $penunjangs
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -130,30 +130,30 @@ class LaboratoriumController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/admin/laboratorium')->with('alert', 'Ada kesalahan data, coba lagi.');
+            return redirect('/admin/penunjang')->with('alert', 'Ada kesalahan data, coba lagi.');
         } else {
-            $laboratoriums = Laboratorium::all()
+            $penunjangs = Penunjang::all()
                 ->where('id', $request->id)
                 ->first();
 
             if ($request->thumbnail == "") {
-                $fileName = $laboratoriums->thumbnail;
+                $fileName = $penunjangs->thumbnail;
 
-                Laboratorium::where('id', $request->id)
+                Penunjang::where('id', $request->id)
                     ->update([
                         'thumbnail' => $fileName,
                         'nama' => $request->nama,
                         'teks' => $request->teks,
                         'release_date' => $request->release_date,
                     ]);
-                return redirect('/admin/laboratorium')->with('status', 'Laboratorium Berhasil Diubah');
+                return redirect('/admin/penunjang')->with('status', 'Penunjang Berhasil Diubah');
             } else {
-                $file = $laboratoriums->thumbnail;
+                $file = $penunjangs->thumbnail;
                 if (file_exists($file)) {
                     @unlink($file);
                 }
 
-                $path_url = 'images/laboratorium/';
+                $path_url = 'images/penunjang/';
 
                 $originName = $request->thumbnail->getClientOriginalName();
                 $fileName = pathinfo($originName, PATHINFO_FILENAME);
@@ -169,14 +169,14 @@ class LaboratoriumController extends Controller
 
                 $img->save($thumbnailpath);
 
-                Laboratorium::where('id', $request->id)
+                Penunjang::where('id', $request->id)
                     ->update([
-                        'thumbnail' => 'images/laboratorium/' . $fileName,
+                        'thumbnail' => 'images/penunjang/' . $fileName,
                         'nama' => $request->nama,
                         'teks' => $request->teks,
                         'release_date' => $request->release_date,
                     ]);
-                return redirect('/admin/laboratorium')->with('status', 'Laboratorium Berhasil Diubah');
+                return redirect('/admin/penunjang')->with('status', 'Penunjang Berhasil Diubah');
             }
         }
     }
@@ -184,82 +184,82 @@ class LaboratoriumController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Laboratorium  $laboratoriums
+     * @param  \App\Models\Penunjang  $penunjangs
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Laboratorium::destroy($id);
-        return redirect('/admin/laboratorium')->with('status', 'Laboratorium Berhasil Dihapus');
+        Penunjang::destroy($id);
+        return redirect('/admin/penunjang')->with('status', 'Penunjang Berhasil Dihapus');
     }
 
     public function restore($id)
     {
-        $laboratorium = Laboratorium::withTrashed()
+        $penunjang = Penunjang::withTrashed()
             ->where('id', $id)
             ->first();
 
-        $laboratorium->restore();
-        return redirect('/admin/laboratorium')->with('status', 'Laboratorium Berhasil Direstore');
+        $penunjang->restore();
+        return redirect('/admin/penunjang')->with('status', 'Penunjang Berhasil Direstore');
     }
 
     public function delete($id)
     {
-        $laboratorium = Laboratorium::withTrashed()
+        $penunjang = Penunjang::withTrashed()
             ->where('id', $id)
             ->first();
 
-        $file = $laboratorium->thumbnail;
+        $file = $penunjang->thumbnail;
 
         if (file_exists($file)) {
             @unlink($file);
         }
 
-        $laboratorium->forceDelete();
-        return redirect('/admin/laboratorium')->with('status', 'Laboratorium Berhasil Dihapus Permanen');
+        $penunjang->forceDelete();
+        return redirect('/admin/penunjang')->with('status', 'Penunjang Berhasil Dihapus Permanen');
     }
 
-    public function menuLaboratorium()
+    public function menuPenunjang()
     {
         $kontak = Kontak::all()->first();
         $profilSingkat = ProfilSingkat::all()->first();
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        $laboratoriumPaginates = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangPaginates = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->paginate(6);
-        $informasiTerbarus = InformasiTerbaru::informasiTerbaru()->take(6)->get();
+        $informasiTerbarus = InformasiTerbaru::informasiTerbaru()->take(3)->get();
         $aplikasiIntegrasis = AplikasiIntegrasi::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->take(3)
             ->get();
 
-        return view('portal.laboratorium.index',  compact('laboratoriumPaginates', 'laboratoriumHeaders', 'aplikasiIntegrasis', 'informasiTerbarus', 'linkProdis', 'profilSingkat', 'kontak'));
+        return view('portal.penunjang.index',  compact('penunjangPaginates', 'penunjangHeaders', 'aplikasiIntegrasis', 'informasiTerbarus', 'linkProdis', 'profilSingkat', 'kontak'));
     }
 
-    public function menuDetailLaboratorium($slug)
+    public function menuDetailPenunjang($slug)
     {
         $kontak = Kontak::all()->first();
         $profilSingkat = ProfilSingkat::all()->first();
-        $laboratorium = Laboratorium::where('slug', 'laboratorium/' . $slug)
+        $penunjang = Penunjang::where('slug', 'penunjang/' . $slug)
             ->firstOrFail();
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        $laboratoriums = Laboratorium::where('release_date', '<=', date('Y-m-d'))
-            ->where('slug', '!=', 'laboratorium/' . $slug)
+        $penunjangs = Penunjang::where('release_date', '<=', date('Y-m-d'))
+            ->where('slug', '!=', 'penunjang/' . $slug)
             ->orderBy('release_date', 'DESC')
             ->take(2)
             ->get();
-        $informasiTerbarus = InformasiTerbaru::informasiTerbaru()->take(6)->get();
+        $informasiTerbarus = InformasiTerbaru::informasiTerbaru()->take(3)->get();
         $aplikasiIntegrasis = AplikasiIntegrasi::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->take(3)
             ->get();
 
-        return view('portal.laboratorium.detail',  compact('laboratorium', 'laboratoriums', 'laboratoriumHeaders', 'aplikasiIntegrasis', 'informasiTerbarus', 'linkProdis', 'profilSingkat', 'kontak'));
+        return view('portal.penunjang.detail',  compact('penunjang', 'penunjangs', 'penunjangHeaders', 'aplikasiIntegrasis', 'informasiTerbarus', 'linkProdis', 'profilSingkat', 'kontak'));
     }
 }

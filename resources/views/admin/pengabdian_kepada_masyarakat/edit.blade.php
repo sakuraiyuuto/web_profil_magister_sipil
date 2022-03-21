@@ -1,6 +1,6 @@
 @extends('admin/layout/main')
 
-@section('title', 'Penunjang')
+@section('title', 'Pengabdian Kepada Masyarakat')
 
 @section('container')
     <div class="content-wrapper">
@@ -9,25 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Penunjang</h1>
+                        <h1 class="m-0">Pengabdian Kepada Masyarakat</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
-        <!-- Alert Status -->
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        @if (session('alert'))
-            <div class="alert alert-danger">
-                {{ session('alert') }}
-            </div>
-        @endif
 
         <!-- Main content -->
         <section class="content">
@@ -36,21 +23,64 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Menu Penunjang</h3>
+                                <h3 class="card-title">Edit Data Pengabdian Kepada Masyarakat</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
+                                    <!-- form start -->
                                     <form class="from-prevent-multiple-submits"
-                                        action="{{ route('ruang_lab.update', $ruangLab->id) }}" method="POST">
+                                        action="{{ route('pengabdian_kepada_masyarakat.update', $pengabdianKepadaMasyarakat) }}"
+                                        method="POST" enctype="multipart/form-data">
                                         @method('patch')
                                         @csrf
-                                        <textarea id="teks" placeholder="Enter the Description" name="teks">{{ $ruangLab->teks }}</textarea>
-                                        <br>
-                                        <button type="submit" class="btn btn-success"> Save </button>
+                                        <div class="card-body">
+                                            <input type="hidden" value="{{ $pengabdianKepadaMasyarakat->id }}" name="id">
+                                            <div class="form-group">
+                                                <label for="judul">Judul</label>
+                                                <input type="text" class="form-control" id="judul" name="judul"
+                                                    placeholder="Masukkan Judul"
+                                                    value="{{ $pengabdianKepadaMasyarakat->judul }}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="author">Pelaku PKM</label>
+                                                <input type="text" class="form-control" id="author" name="author"
+                                                    placeholder="Masukkan Pelaku PKM"
+                                                    value="{{ $pengabdianKepadaMasyarakat->author }}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tahun">Tahun</label>
+                                                <input type="number" class="form-control" id="tahun" name="tahun"
+                                                    placeholder="Masukkan Tahun Penelitian"
+                                                    value="{{ $pengabdianKepadaMasyarakat->tahun }}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="thumbnail">Thumbnail (Maksimal 2MB)</label>
+                                                <div class="form-group">
+                                                    <img src="{{ url($pengabdianKepadaMasyarakat->thumbnail) }}"
+                                                        alt="Image Missing" id="old_thumbnail" style="max-width: 200px;"
+                                                        class="mt-2" />
+                                                </div>
+                                                <input type="file" accept="image/*" class="form-control mt-0"
+                                                    name="thumbnail" id="input_foto_edit">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="teks">Teks</label>
+                                                <textarea id="teks" placeholder="Masukkan Deskripsi" name="teks">{{ $pengabdianKepadaMasyarakat->teks }}</textarea>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <label for="release_date">Tanggal Rilis</label>
+                                                <input type="date" class="form-control mt-0" name="release_date"
+                                                    value="{{ $pengabdianKepadaMasyarakat->release_date }}" required>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -59,9 +89,6 @@
         </section>
     </div>
 
-@endsection
-
-@section('script')
     <script>
         //Define an adapter to upload the files
         class MyUploadAdapter {
@@ -170,6 +197,22 @@
         }).catch((error) => {
             console.error(error);
         });
+
+        var uploadField = document.getElementById("input_foto_edit");
+        uploadField.onchange = function() {
+            if (this.files[0].size > 2000000) {
+                alert("Batas maksimum 2MB!");
+                this.value = "";
+            } else {
+                //Ubah Img Preview
+                var reader = new FileReader();
+                reader.onload = function() {
+                    var output = document.getElementById('old_thumbnail');
+                    output.src = reader.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            };
+        };
     </script>
 
     <!-- Validasi Tombol -->

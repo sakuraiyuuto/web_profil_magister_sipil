@@ -8,8 +8,8 @@ use App\Models\Galeri;
 use App\Models\InformasiTerbaru;
 use App\Models\Kemitraan;
 use App\Models\Kontak;
-use App\Models\Laboratorium;
-use App\Models\LaboratoriumSingkat;
+use App\Models\Penunjang;
+use App\Models\PenunjangSingkat;
 use App\Models\PengabdianKeMasyarakat;
 use App\Models\Perpustakaan;
 use App\Models\ProfilSingkat;
@@ -59,10 +59,10 @@ class BerandaController extends Controller
             ->take(4)
             ->get();
 
-        $laboratoriumSingkat = LaboratoriumSingkat::all()
+        $penunjangSingkat = PenunjangSingkat::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
@@ -79,8 +79,8 @@ class BerandaController extends Controller
             'perpustakaan',
             'informasiTerbarus',
             'pengabdianKeMasyarakats',
-            'laboratoriumSingkat',
-            'laboratoriumHeaders'
+            'penunjangSingkat',
+            'penunjangHeaders'
         ));
     }
 }

@@ -7,7 +7,7 @@ use App\Models\HimpunanMahasiswa;
 use App\Models\AplikasiIntegrasi;
 use App\Models\Kontak;
 use App\Models\InformasiTerbaru;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\ProfilSingkat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -102,10 +102,10 @@ class KuliahKerjaLapanganController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kuliah_kerja_lapangan.index',  compact('kuliahKerjaLapangan', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.kuliah_kerja_lapangan.index',  compact('kuliahKerjaLapangan', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

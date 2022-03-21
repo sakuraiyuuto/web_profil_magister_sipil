@@ -8,7 +8,7 @@ use App\Models\Kontak;
 use App\Models\InformasiTerbaru;
 
 use App\Models\HimpunanMahasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\ProfilSingkat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -202,11 +202,11 @@ class KerjasamaMitraKolaborasiController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kerjasama_mitra_kolaborasi.index',  compact('kerjasamaMitraKolaborasis', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.kerjasama_mitra_kolaborasi.index',  compact('kerjasamaMitraKolaborasis', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
     public function menuKerjasamaMitraKolaborasiDetail($slug)
@@ -230,10 +230,10 @@ class KerjasamaMitraKolaborasiController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kerjasama_mitra_kolaborasi.show', compact('kontak', 'kerjasamaMitraKolaborasi', 'kerjasamaMitraKolaborasis', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'laboratoriumHeaders'));
+        return view('portal.kerjasama_mitra_kolaborasi.show', compact('kontak', 'kerjasamaMitraKolaborasi', 'kerjasamaMitraKolaborasis', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'penunjangHeaders'));
     }
 }

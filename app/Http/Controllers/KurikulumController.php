@@ -9,7 +9,7 @@ use App\Models\InformasiTerbaru;
 use Illuminate\Http\Request;
 use App\Models\MataKuliah;
 use App\Models\HimpunanMahasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\ProfilSingkat;
 use Illuminate\Support\Facades\Auth;
 
@@ -105,11 +105,11 @@ class KurikulumController extends Controller
             ->orderBy('release_date', 'DESC')
             ->take(3)
             ->get();
-        
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kurikulum.index',  compact('himpunanMahasiswaHeaders', 'kontak', 'mataKuliahs', 'informasiTerbarus', 'aplikasiIntegrasis', 'profilSingkat', 'laboratoriumHeaders'));
+        return view('portal.kurikulum.index',  compact('himpunanMahasiswaHeaders', 'kontak', 'mataKuliahs', 'informasiTerbarus', 'aplikasiIntegrasis', 'profilSingkat', 'penunjangHeaders'));
     }
 }

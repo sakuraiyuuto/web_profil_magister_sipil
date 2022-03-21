@@ -8,7 +8,7 @@ use App\Models\ProfilSingkat;
 use App\Models\AplikasiIntegrasi;
 use App\Models\InformasiTerbaru;
 use App\Models\HimpunanMahasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\ProfilLulusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,31 +24,8 @@ class ProfilLulusanController extends Controller
     public function index()
     {
         $session_user = Auth::user();
-        $profilLulusans = ProfilLulusan::withTrashed()->get()
-            ->sortDesc();
-        return view('admin.profil_lulusan.index', compact('profilLulusans', 'session_user'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required',
-            'nim' => 'required',
-            'ipk' => 'required',
-            'angkatan' => 'required',
-            'tahun_lulus' => 'required',
-            'nomor_ijazah' => 'required'
-        ]);
-
-        ProfilLulusan::create($request->all());
-
-        return redirect('/admin/profil_lulusan')->with('status', 'Profil Lulusan Berhasil Ditambah');
+        $profilLulusan = ProfilLulusan::all()->first();
+        return view('admin.profil_lulusan.index',  compact('profilLulusan', 'session_user'));
     }
 
     /**
@@ -60,68 +37,23 @@ class ProfilLulusanController extends Controller
      */
     public function update(Request $request, ProfilLulusan $profilLulusan)
     {
-        $request->validate([
-            'nama' => 'required',
-            'nim' => 'required',
-            'ipk' => 'required',
-            'angkatan' => 'required',
-            'tahun_lulus' => 'required',
-            'nomor_ijazah' => 'required'
+        $this->validate($request, [
+            'teks'     => 'required'
         ]);
 
-        ProfilLulusan::where('id', $request->id)
+        ProfilLulusan::where('id', $profilLulusan->id)
             ->update([
-                'nama' => $request->nama,
-                'nim' => $request->nim,
-                'ipk' => $request->ipk,
-                'angkatan' => $request->angkatan,
-                'tahun_lulus' => $request->tahun_lulus,
-                'nomor_ijazah' => $request->nomor_ijazah
+                'teks' => $request->teks
             ]);
 
-        return redirect('/admin/profil_lulusan')->with('status', 'Profil Lulusan Berhasil Diubah');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ProfilLulusan  $profilLulusan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ProfilLulusan $profilLulusan)
-    {
-        ProfilLulusan::destroy($profilLulusan->id);
-
-        return redirect('/admin/profil_lulusan')->with('status', 'Profil Lulusan Berhasil Dihapus');
-    }
-
-    public function restore($id)
-    {
-        $profilLulusan = ProfilLulusan::withTrashed()
-            ->where('id', $id)
-            ->first();
-
-        $profilLulusan->restore();
-        return redirect('/admin/profil_lulusan')->with('status', 'Profil Lulusan Berhasil Direstore');
-    }
-
-    public function delete($id)
-    {
-        $profilLulusan = ProfilLulusan::withTrashed()
-            ->where('id', $id)
-            ->first();
-
-        $profilLulusan->forceDelete();
-        return redirect('/admin/profil_lulusan')->with('status', 'Profil Lulusan Berhasil Dihapus Permanen');
+        return redirect('admin/profil_lulusan')->with('status', 'ProfilLulusan Berhasil Diubah!');
     }
 
     public function menuProfilLulusan()
     {
-        $kontak = Kontak::all()->first();
+        $profilLulusan = ProfilLulusan::all()
+            ->first();
 
-        $profilSingkat = ProfilSingkat::all()->first();
-        $profilLulusans = ProfilLulusan::orderBy('tahun_lulus', 'DESC')
-            ->paginate(25);
         $informasiTerbarus = InformasiTerbaru::informasiTerbaru()
             ->take(3)
             ->get();
@@ -129,11 +61,15 @@ class ProfilLulusanController extends Controller
             ->orderBy('release_date', 'DESC')
             ->take(3)
             ->get();
+        $profilSingkat = ProfilSingkat::all()
+            ->first();
+        $kontak = Kontak::all()
+            ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.profil_lulusan.index',  compact('profilLulusans', 'aplikasiIntegrasis', 'informasiTerbarus', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.profil_lulusan.index',  compact('profilLulusan', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }

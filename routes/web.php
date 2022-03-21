@@ -13,7 +13,7 @@ use App\Http\Controllers\DokumenProdiController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\HasilKaryaController;
-use App\Http\Controllers\LaboratoriumController;
+use App\Http\Controllers\PenunjangController;
 use App\Http\Controllers\InformasiBeasiswaController;
 use App\Http\Controllers\JadwalKuliahController;
 use App\Http\Controllers\JadwalUjianController;
@@ -49,10 +49,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InformasiTerbaruController;
 use App\Http\Controllers\UnduhanTerbaruController;
 use App\Http\Controllers\PencarianController;
-use App\Http\Controllers\LaboratoriumSingkatController;
+use App\Http\Controllers\PenunjangSingkatController;
 use App\Http\Controllers\TracerStudyController;
 use App\Http\Controllers\HimpunanMahasiswaController;
-
+use App\Http\Controllers\PengabdianKepadaMasyarakatController;
 
 //Admin
 Route::get('/admin', [LoginController::class, 'index']);
@@ -120,6 +120,9 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::post('/admin/kegiatan_kkl/{kegiatan_kkl}/restore', [PengabdianKeMasyarakatController::class, 'restore']);
     Route::post('/admin/kegiatan_kkl/{kegiatan_kkl}/delete', [PengabdianKeMasyarakatController::class, 'delete']);
 
+    Route::post('/admin/pengabdian_kepada_masyarakat/{pengabdian_kepada_masyarakat}/restore', [PengabdianKepadaMasyarakatController::class, 'restore']);
+    Route::post('/admin/pengabdian_kepada_masyarakat/{pengabdian_kepada_masyarakat}/delete', [PengabdianKepadaMasyarakatController::class, 'delete']);
+
     Route::post('/admin/profil_lulusan/{profil_lulusan}/restore', [ProfilLulusanController::class, 'restore']);
     Route::post('/admin/profil_lulusan/{profil_lulusan}/delete', [ProfilLulusanController::class, 'delete']);
 
@@ -147,8 +150,8 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::post('/admin/tata_tertib_peraturan/{tata_tertib_peraturan}/restore', [TataTertibPeraturanController::class, 'restore']);
     Route::post('/admin/tata_tertib_peraturan/{tata_tertib_peraturan}/delete', [TataTertibPeraturanController::class, 'delete']);
 
-    Route::post('/admin/laboratorium/{laboratorium}/restore', [LaboratoriumController::class, 'restore']);
-    Route::post('/admin/laboratorium/{laboratorium}/delete_permanen', [LaboratoriumController::class, 'delete']);
+    Route::post('/admin/penunjang/{penunjang}/restore', [PenunjangController::class, 'restore']);
+    Route::post('/admin/penunjang/{penunjang}/delete_permanen', [PenunjangController::class, 'delete']);
 
     Route::post('/admin/dosen/{dosen}/restore', [DosenController::class, 'restore']);
     Route::post('/admin/dosen/{dosen}/delete', [DosenController::class, 'delete']);
@@ -169,7 +172,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::resource('/admin/dosen', DosenController::class);
     Route::resource('/admin/galeri', GaleriController::class);
     Route::resource('/admin/hasil_karya', HasilKaryaController::class);
-    Route::resource('/admin/laboratorium', LaboratoriumController::class);
+    Route::resource('/admin/penunjang', PenunjangController::class);
     Route::resource('/admin/informasi_beasiswa', InformasiBeasiswaController::class);
     Route::resource('/admin/jurnal', JurnalController::class);
     Route::resource('/admin/kalender_akademik', KalenderAkademikController::class);
@@ -180,6 +183,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::resource('/admin/layanan_mahasiswa', LayananMahasiswaController::class);
     Route::resource('/admin/mata_kuliah', MataKuliahController::class);
     Route::resource('/admin/penelitian', PenelitianController::class);
+    Route::resource('/admin/pengabdian_kepada_masyarakat', PengabdianKepadaMasyarakatController::class);
     Route::resource('/admin/kegiatan_kkl', PengabdianKeMasyarakatController::class);
     Route::resource('/admin/perpustakaan', PerpustakaanController::class);
     Route::resource('/admin/profil_lulusan', ProfilLulusanController::class);
@@ -199,7 +203,7 @@ Route::middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::resource('/admin/tata_tertib_peraturan', TataTertibPeraturanController::class);
     Route::resource('/admin/tesis', TesisController::class);
     Route::resource('/admin/kuliah_kerja_lapangan', KuliahKerjaLapanganController::class);
-    Route::resource('/admin/laboratorium_singkat', LaboratoriumSingkatController::class);
+    Route::resource('/admin/penunjang_singkat', PenunjangSingkatController::class);
     Route::resource('/admin/himpunan_mahasiswa', HimpunanMahasiswaController::class);
 
     Route::post('/admin/ckeditor/upload', 'App\Http\Controllers\CKEditorController@store')->name('ckeditor.upload');
@@ -220,7 +224,7 @@ Route::get('hasil_karya', [HasilKaryaController::class, 'menuHasilKarya']);
 Route::get('hasil_karya/{slug}', [HasilKaryaController::class, 'menuHasilKaryaDetail']);
 Route::get('staf', [StafController::class, 'menuStaf']);
 Route::get('dosen', [DosenController::class, 'menuDosen']);
-Route::get('laboratorium', [LaboratoriumController::class, 'menuLaboratorium']);
+Route::get('penunjang', [PenunjangController::class, 'menuPenunjang']);
 Route::get('kalender_akademik', [KalenderAkademikController::class, 'menuKalenderAkademik']);
 Route::get('kalender_akademik/{slug}', [KalenderAkademikController::class, 'menuKalenderAkademikDetail']);
 
@@ -228,6 +232,7 @@ Route::get('layanan_mahasiswa/{slug}', [LayananMahasiswaController::class, 'menu
 Route::get('informasi_beasiswa/{slug}', [InformasiBeasiswaController::class, 'menuDetailInformasiBeasiswa']);
 Route::get('penelitian/{slug}', [PenelitianController::class, 'menuDetailPenelitian']);
 Route::get('kegiatan_kkl/{slug}', [PengabdianKeMasyarakatController::class, 'menuDetailPengabdianKeMasyarakat']);
+Route::get('pengabdian_kepada_masyarakat/{slug}', [PengabdianKepadaMasyarakatController::class, 'menuDetailPengabdianKepadaMasyarakat']);
 Route::get('berita/{slug}', [BeritaController::class, 'menuDetailBerita']);
 Route::get('dokumen_prodi/{slug}', [DokumenProdiController::class, 'menuDetailDokumenProdi']);
 Route::get('jadwal_ujian/{slug}', [JadwalUjianController::class, 'menuDetailJadwalUjian']);
@@ -243,6 +248,7 @@ Route::get('ruang_prodi_akademik', [RuangStafDanDosenController::class, 'menuRua
 Route::get('perpustakaan', [PerpustakaanController::class, 'menuPerpustakaan']);
 Route::get('penelitian', [PenelitianController::class, 'menuPenelitian']);
 Route::get('kegiatan_kkl', [PengabdianKeMasyarakatController::class, 'menuPengabdianKeMasyarakat']);
+Route::get('pengabdian_kepada_masyarakat', [PengabdianKepadaMasyarakatController::class, 'menuPengabdianKepadaMasyarakat']);
 Route::get('berita', [BeritaController::class, 'menuBerita']);
 Route::get('kontak', [KontakController::class, 'menuKontak']);
 Route::get('aplikasi_integrasi', [AplikasiIntegrasiController::class, 'menuAplikasiIntegrasi']);
@@ -258,7 +264,7 @@ Route::get('tata_tertib_peraturan', [TataTertibPeraturanController::class, 'menu
 Route::get('kelompok_keahlian_dosen', [KelompokKeahlianDosenController::class, 'menuKelompokKeahlianDosen']);
 Route::get('tesis', [TesisController::class, 'menuTesis']);
 Route::get('kuliah_kerja_lapangan', [KuliahKerjaLapanganController::class, 'menuKuliahKerjaLapangan']);
-Route::get('laboratorium', [LaboratoriumController::class, 'menuLaboratorium']);
-Route::get('laboratorium/{slug}', [LaboratoriumController::class, 'menuDetailLaboratorium']);
+Route::get('penunjang', [PenunjangController::class, 'menuPenunjang']);
+Route::get('penunjang/{slug}', [PenunjangController::class, 'menuDetailPenunjang']);
 Route::get('tracer_study', [TracerStudyController::class, 'menuTracerStudy']);
 Route::get('himpunan_mahasiswa', [HimpunanMahasiswaController::class, 'menuHimpunanMahasiswa']);

@@ -7,7 +7,7 @@ use App\Models\HimpunanMahasiswa;
 use App\Models\Kontak;
 use Illuminate\Http\Request;
 use App\Models\InformasiTerbaru;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 
 class InformasiTerbaruController extends Controller
 {
@@ -26,7 +26,7 @@ class InformasiTerbaruController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
@@ -36,7 +36,7 @@ class InformasiTerbaruController extends Controller
             'kontak',
             'informasiTerbarus',
             'aplikasiIntegrasis',
-            'laboratoriumHeaders'
+            'penunjangHeaders'
         ));
     }
 }

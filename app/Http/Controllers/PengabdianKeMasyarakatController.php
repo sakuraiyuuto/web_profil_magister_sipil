@@ -9,7 +9,7 @@ use App\Models\AplikasiIntegrasi;
 use App\Models\InformasiTerbaru;
 use App\Models\PengabdianKeMasyarakat;
 use App\Models\HimpunanMahasiswa;
-use App\Models\Laboratorium;
+use App\Models\Penunjang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -250,11 +250,11 @@ class PengabdianKeMasyarakatController extends Controller
         $kontak = Kontak::all()
             ->first();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kegiatan_kkl.index',  compact('pengabdianKeMasyarakats', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.kegiatan_kkl.index',  compact('pengabdianKeMasyarakats', 'informasiTerbarus',  'aplikasiIntegrasis', 'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 
     public function menuDetailPengabdianKeMasyarakat($slug)
@@ -277,10 +277,10 @@ class PengabdianKeMasyarakatController extends Controller
             ->take(3)
             ->get();
 
-        $laboratoriumHeaders = Laboratorium::where('release_date', '<=', date('Y-m-d'))
+        $penunjangHeaders = Penunjang::where('release_date', '<=', date('Y-m-d'))
             ->orderBy('release_date', 'DESC')
             ->get();
 
-        return view('portal.kegiatan_kkl.detail',  compact('pengabdianKeMasyarakat', 'pengabdianKeMasyarakats', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'laboratoriumHeaders'));
+        return view('portal.kegiatan_kkl.detail',  compact('pengabdianKeMasyarakat', 'pengabdianKeMasyarakats', 'aplikasiIntegrasis', 'informasiTerbarus',  'profilSingkat', 'kontak', 'penunjangHeaders'));
     }
 }
