@@ -101,7 +101,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ url('dashboard') }}/{{ $session_user->id }}" method="post"
+                <form action="{{ url('admin/dashboard') }}/{{ $session_user->id }}" method="post"
                     enctype="multipart/form-data">
                     @method('patch')
                     @csrf
@@ -143,7 +143,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ url('dashboard') }}/{{ $session_user->id }}" method="post"
+                <form action="{{ url('admin/dashboard') }}/{{ $session_user->id }}" method="post"
                     enctype="multipart/form-data">
                     @method('patch')
                     @csrf
